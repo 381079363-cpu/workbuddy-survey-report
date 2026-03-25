@@ -3,749 +3,1426 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>数智化协同及AI应用考评分析报告 · 董事长室 · 2026年1月</title>
+<title>数智化协同及AI应用考评分析报告 · 总部 · 2026年1月</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{
-  --bg0:#020d12;--bg1:#041820;--bg2:#062030;
-  --card:rgba(4,28,44,0.88);--card2:rgba(3,20,32,0.92);
-  --t1:#d4f5ee;--t2:#7ecfbc;--t3:#3a8a78;--tdim:#1e5a4a;
-  --a1:#00e5c0;--a2:#00b4d8;--a3:#48cae4;--a4:#0077b6;
-  --g1:rgba(0,229,192,0.18);--g2:rgba(0,180,216,0.12);
-  --border:rgba(0,229,192,0.22);--border2:rgba(0,229,192,0.55);
-  --red:#ff5470;--yellow:#ffd166;--green:#00e5c0;
-  --grid:rgba(0,229,192,0.055);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--bg0);color:var(--t1);font-family:'PingFang SC','Microsoft YaHei','Segoe UI',sans-serif;min-height:100vh;overflow-x:hidden}
+  :root {
+    --bg-main: #f0f6ff;
+    --bg-card: #ffffff;
+    --bg-section: #e8f2ff;
+    --accent1: #1a7cfa;
+    --accent2: #00c4b4;
+    --accent3: #6c63ff;
+    --accent4: #f5a623;
+    --accent-warn: #ff5f6d;
+    --text-primary: #1a2a4a;
+    --text-secondary: #4a6fa5;
+    --text-muted: #8aa3cc;
+    --border: #c8daf5;
+    --shadow: 0 4px 24px rgba(26,124,250,0.08);
+    --shadow-hover: 0 8px 32px rgba(26,124,250,0.16);
+    --radius: 14px;
+    --radius-sm: 8px;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--bg-main);
+    font-family: -apple-system, 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-primary);
+    min-height: 100vh;
+  }
 
-/* ── animated bg ── */
-body::before{content:'';position:fixed;inset:0;
-  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
-  background-size:56px 56px;z-index:0;animation:bgpan 50s linear infinite}
-@keyframes bgpan{from{background-position:0 0}to{background-position:56px 56px}}
+  /* ===== TOP HEADER ===== */
+  .top-header {
+    background: linear-gradient(135deg, #1a2a6c 0%, #1a7cfa 55%, #00c4b4 100%);
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .top-header::before {
+    content:'';
+    position:absolute; inset:0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M0 0h40v40H0V0zm40 40h40v40H40V40zm0-40h2l-2 2V0zm0 4l4-4h2l-6 6V4zm0 4l8-8h2L40 10V8zm0 4L52 0h2L40 14v-2zm0 4L56 0h2L40 18v-2zm0 4L60 0h2L40 22v-2zm0 4L64 0h2L40 26v-2zm0 4L68 0h2L40 30v-2zm0 4L72 0h2L40 34v-2zm0 4L76 0h2L40 38v-2zm0 4L80 0v2L42 40h-2zm4 0L80 4v2L46 40h-2zm4 0L80 8v2L50 40h-2zm4 0L80 12v2L54 40h-2zm4 0L80 16v2L58 40h-2zm4 0L80 20v2L62 40h-2zm4 0L80 24v2L66 40h-2zm4 0L80 28v2L70 40h-2zm4 0L80 32v2L74 40h-2zm4 0L80 36v2L78 40h-2zm4 0L80 40v0z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .header-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 48px 40px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    z-index: 1;
+  }
+  .header-left { flex:1; }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    backdrop-filter: blur(8px);
+  }
+  .header-badge::before { content:'●'; color:#00c4b4; font-size:8px; }
+  .header-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.25;
+    margin-bottom: 10px;
+  }
+  .header-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.72);
+    letter-spacing: 0.5px;
+  }
+  .header-right {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+  }
+  .header-stat {
+    text-align: center;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 16px 22px;
+    backdrop-filter: blur(8px);
+    min-width: 90px;
+  }
+  .header-stat .num { font-size: 26px; font-weight: 700; color: #fff; }
+  .header-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.72); margin-top: 4px; }
 
-/* ── nebula ── */
-.neb{position:fixed;border-radius:50%;filter:blur(130px);pointer-events:none;z-index:0;opacity:.15}
-.n1{width:800px;height:800px;background:radial-gradient(circle,#006d77,transparent 70%);top:-300px;left:-200px}
-.n2{width:600px;height:600px;background:radial-gradient(circle,#00b4d8,transparent 70%);bottom:-150px;right:-100px}
-.n3{width:350px;height:350px;background:radial-gradient(circle,#48cae4,transparent 70%);top:40%;left:50%}
+  /* ===== NAV TABS ===== */
+  .nav-wrap {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(26,124,250,0.06);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+  }
+  .nav-tab {
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    user-select: none;
+  }
+  .nav-tab:hover { color: var(--accent1); }
+  .nav-tab.active { color: var(--accent1); border-bottom-color: var(--accent1); }
 
-.wrap{position:relative;z-index:1;max-width:1480px;margin:0 auto;padding:0 36px 80px}
+  /* ===== MAIN LAYOUT ===== */
+  .main-wrap { max-width: 1400px; margin: 0 auto; padding: 32px 40px 60px; }
 
-/* ── HEADER ── */
-.header{text-align:center;padding:60px 0 50px;position:relative}
-.hbadge{display:inline-block;padding:4px 20px;border:1px solid var(--a1);border-radius:20px;
-  font-size:11px;letter-spacing:4px;color:var(--a1);text-transform:uppercase;
-  margin-bottom:18px;background:rgba(0,229,192,0.06)}
-.header h1{font-size:clamp(26px,3.2vw,50px);font-weight:700;line-height:1.2;margin-bottom:12px;
-  background:linear-gradient(135deg,#fff 0%,var(--a1) 45%,var(--a2) 100%);
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hsub{color:var(--t2);font-size:14px;letter-spacing:2px}
-.hline{width:100px;height:2px;background:linear-gradient(90deg,transparent,var(--a1),transparent);margin:18px auto 0}
+  /* ===== SECTION ===== */
+  .section { display: none; animation: fadeUp 0.4s ease; }
+  .section.active { display: block; }
+  @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
 
-/* ── SECTION TITLE ── */
-.stitle{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:600;
-  color:var(--a1);margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--border)}
-.stitle .dot{width:8px;height:8px;border-radius:50%;background:var(--a1);box-shadow:0 0 10px var(--a1);flex-shrink:0}
-.snum{font-size:11px;letter-spacing:2px;color:var(--tdim);margin-left:auto;text-transform:uppercase}
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-title::before {
+    content: '';
+    width: 4px; height: 20px;
+    background: linear-gradient(to bottom, var(--accent1), var(--accent2));
+    border-radius: 2px;
+  }
 
-/* ── CARDS ── */
-.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px;
-  backdrop-filter:blur(12px);transition:border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
-.card::before{content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(0,229,192,0.04) 0%,transparent 60%);pointer-events:none}
-.card:hover{border-color:var(--border2);box-shadow:0 0 40px rgba(0,229,192,0.1)}
+  /* ===== KPI CARDS ===== */
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .kpi-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 20px 18px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .kpi-card:hover { box-shadow: var(--shadow-hover); }
+  .kpi-card::after {
+    content:'';
+    position:absolute; bottom:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--c1,#1a7cfa), var(--c2,#00c4b4));
+  }
+  .kpi-card .icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--c1,#1a7cfa)22, var(--c2,#00c4b4)44);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .kpi-card .val {
+    font-size: 28px; font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.1;
+  }
+  .kpi-card .unit { font-size: 13px; color: var(--text-secondary); font-weight: 500; }
+  .kpi-card .lbl { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+  .kpi-card .badge {
+    display: inline-block;
+    font-size: 11px; padding: 2px 8px;
+    border-radius: 20px; margin-top: 6px;
+    font-weight: 500;
+  }
+  .badge-up { background: #e8faf5; color: #00b894; }
+  .badge-warn { background: #fff0f1; color: #ff5f6d; }
+  .badge-mid { background: #e8f3ff; color: #1a7cfa; }
 
-/* ── KPI ── */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px;margin-bottom:40px}
-.kpi{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;
-  text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(12px);transition:all .3s}
-.kpi::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
-  background:linear-gradient(90deg,transparent,var(--kc,var(--a1)),transparent)}
-.kpi:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,229,192,0.13)}
-.kpi-ic{font-size:26px;margin-bottom:8px}
-.kpi-v{font-size:38px;font-weight:700;line-height:1;
-  background:linear-gradient(135deg,var(--a1),var(--a2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.kpi-l{font-size:12px;color:var(--t2);margin-top:6px;letter-spacing:1px}
-.kpi-s{font-size:11px;color:var(--tdim);margin-top:3px}
+  /* ===== TWO COL ===== */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; margin-bottom: 24px; }
 
-/* ── GRID ── */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:36px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:22px;margin-bottom:36px}
-.g12{display:grid;grid-template-columns:1fr 2fr;gap:24px;margin-bottom:36px}
-.g21{display:grid;grid-template-columns:2fr 1fr;gap:24px;margin-bottom:36px}
-@media(max-width:1100px){.g2,.g12,.g21{grid-template-columns:1fr}.g3{grid-template-columns:1fr 1fr}}
-@media(max-width:700px){.g3{grid-template-columns:1fr}}
-section{margin-bottom:52px}
+  /* ===== CHART CARD ===== */
+  .chart-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    padding: 24px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+  .chart-card-title {
+    font-size: 14px; font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .chart-card-sub {
+    font-size: 12px; color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .chart-wrap { position: relative; }
 
-/* ── CHART ── */
-.cw{position:relative;height:300px;width:100%}
-.cwl{position:relative;height:360px;width:100%}
-.cwm{position:relative;height:260px;width:100%}
-.cws{position:relative;height:220px;width:100%}
+  /* ===== DEPT CARD ===== */
+  .dept-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 24px; }
+  .dept-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .dept-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
+  .dept-card-header {
+    padding: 16px 20px;
+    background: linear-gradient(135deg, var(--dc1,#1a7cfa)12, var(--dc2,#00c4b4)25);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .dept-card-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: linear-gradient(135deg, var(--dc1,#1a7cfa), var(--dc2,#00c4b4));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 18px;
+    flex-shrink: 0;
+  }
+  .dept-card-name { font-size: 14px; font-weight: 700; color: var(--text-primary); }
+  .dept-card-count { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .dept-card-body { padding: 16px 20px; }
+  .score-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  .score-label { font-size: 12px; color: var(--text-muted); }
+  .score-val { font-size: 15px; font-weight: 700; }
+  .score-bar-wrap { height: 5px; background: var(--bg-section); border-radius: 3px; flex: 1; margin: 0 10px; }
+  .score-bar { height: 5px; border-radius: 3px; background: linear-gradient(90deg, var(--accent1), var(--accent2)); }
+  .dept-sub-list { margin-top: 12px; }
+  .dept-sub-item {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 7px 10px;
+    background: var(--bg-section);
+    border-radius: var(--radius-sm);
+    margin-bottom: 6px;
+    font-size: 12px;
+  }
+  .dept-sub-name { color: var(--text-secondary); font-weight: 500; }
+  .dept-sub-scores { display: flex; gap: 10px; }
+  .dept-sub-scores span { color: var(--text-primary); font-weight: 600; }
+  .dept-comment {
+    margin-top: 12px; padding: 12px;
+    background: linear-gradient(135deg, #e8f3ff, #e8faf5);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent1);
+    font-size: 12px; color: var(--text-secondary); line-height: 1.6;
+  }
+  .dept-suggest {
+    margin-top: 8px; padding: 12px;
+    background: linear-gradient(135deg, #fff8e8, #fff0f8);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent4);
+    font-size: 12px; color: var(--text-secondary); line-height: 1.6;
+  }
 
-/* ── TABLE ── */
-.dt{width:100%;border-collapse:collapse;font-size:13px}
-.dt thead th{padding:10px 14px;background:rgba(0,229,192,0.1);color:var(--a1);font-weight:600;
-  letter-spacing:.5px;border-bottom:1px solid var(--border);text-align:left;white-space:nowrap}
-.dt tbody tr{border-bottom:1px solid rgba(0,229,192,0.07);transition:background .2s}
-.dt tbody tr:hover{background:rgba(0,229,192,0.05)}
-.dt tbody td{padding:9px 14px;color:var(--t2);vertical-align:middle}
-.dt tbody td:first-child{color:var(--t1);font-weight:500}
+  /* ===== TABLE ===== */
+  .table-wrap {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .table-head-bar {
+    padding: 16px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .table-title { font-size: 15px; font-weight: 700; }
+  .table-search {
+    padding: 6px 14px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    font-size: 13px;
+    outline: none;
+    color: var(--text-primary);
+    background: var(--bg-section);
+    width: 200px;
+  }
+  table { width: 100%; border-collapse: collapse; }
+  thead th {
+    background: var(--bg-section);
+    font-size: 12px; font-weight: 600;
+    color: var(--text-secondary);
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  tbody tr { border-bottom: 1px solid #f0f5ff; transition: background 0.15s; }
+  tbody tr:hover { background: #f5faff; }
+  tbody td { font-size: 13px; padding: 10px 14px; color: var(--text-primary); }
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 600;
+  }
+  .tag-a { background:#e8f3ff; color:#1a7cfa; }
+  .tag-b { background:#e8faf5; color:#00b894; }
+  .tag-c { background:#fff8e8; color:#f5a623; }
+  .tag-d { background:#fff0f1; color:#ff5f6d; }
 
-/* ── BADGE ── */
-.bdg{display:inline-block;padding:2px 10px;border-radius:10px;font-size:12px;font-weight:600}
-.bh{background:rgba(0,229,192,0.12);color:var(--green);border:1px solid rgba(0,229,192,0.3)}
-.bm{background:rgba(255,209,102,0.1);color:var(--yellow);border:1px solid rgba(255,209,102,0.3)}
-.bl{background:rgba(255,84,112,0.1);color:var(--red);border:1px solid rgba(255,84,112,0.3)}
+  /* ===== INSIGHT CARDS ===== */
+  .insight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
+  .insight-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 22px 24px;
+  }
+  .insight-card-title {
+    font-size: 14px; font-weight: 700;
+    margin-bottom: 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .insight-list { list-style: none; }
+  .insight-list li {
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13px; color: var(--text-secondary);
+    line-height: 1.6;
+    display: flex; gap: 8px;
+  }
+  .insight-list li:last-child { border-bottom: none; }
+  .insight-list li::before { content:'›'; color: var(--accent1); font-weight: 700; flex-shrink: 0; }
 
-/* ── DEPT CARD ── */
-.dept-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px;margin-bottom:36px}
-.dept-card{background:var(--card2);border:1px solid var(--border);border-radius:16px;
-  overflow:hidden;position:relative;transition:all .3s}
-.dept-card:hover{border-color:var(--border2);box-shadow:0 0 36px rgba(0,229,192,0.1)}
-.dept-card-hd{padding:18px 22px 14px;border-bottom:1px solid var(--border);
-  background:linear-gradient(135deg,rgba(0,229,192,0.07),transparent)}
-.dept-card-hd .dname{font-size:15px;font-weight:700;color:var(--a1);margin-bottom:4px}
-.dept-card-hd .dsub{font-size:12px;color:var(--tdim);letter-spacing:1px}
-.dept-card-body{padding:16px 22px}
-.dept-stats{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:14px}
-.dstat{text-align:center;min-width:64px}
-.dstat-v{font-size:22px;font-weight:700;
-  background:linear-gradient(135deg,var(--a1),var(--a2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.dstat-l{font-size:11px;color:var(--tdim);margin-top:2px}
-.dept-score-bar{margin-bottom:14px}
-.sb-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:12px}
-.sb-label{color:var(--t3);width:70px;flex-shrink:0}
-.sb-track{flex:1;height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
-.sb-fill{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--a4),var(--a1))}
-.sb-val{color:var(--t1);font-weight:600;width:30px;text-align:right;flex-shrink:0}
-.dept-comment{font-size:13px;color:var(--t2);line-height:1.8;padding:12px 14px;
-  background:rgba(0,229,192,0.04);border-left:3px solid var(--a1);border-radius:0 8px 8px 0;margin-bottom:10px}
-.dept-suggest{font-size:12.5px;color:var(--t3);line-height:1.8;padding:10px 14px;
-  background:rgba(0,180,216,0.05);border-left:3px solid var(--a2);border-radius:0 8px 8px 0}
-.dept-suggest li{margin-bottom:3px;padding-left:2px}
-.dept-members{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-.dmember{font-size:11px;padding:2px 10px;background:rgba(0,229,192,0.08);
-  border:1px solid rgba(0,229,192,0.2);border-radius:10px;color:var(--a1)}
+  /* ===== SUGGEST GRID ===== */
+  .suggest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+  .suggest-card {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    transition: box-shadow 0.2s;
+  }
+  .suggest-card:hover { box-shadow: var(--shadow-hover); }
+  .suggest-num {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent1), var(--accent2));
+    color: #fff; font-size: 14px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .suggest-title { font-size: 14px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+  .suggest-text { font-size: 12px; color: var(--text-secondary); line-height: 1.7; }
+  .suggest-tag {
+    display: inline-block; margin-top: 10px;
+    font-size: 11px; padding: 3px 10px; border-radius: 20px;
+    background: var(--bg-section); color: var(--accent1);
+    font-weight: 600;
+  }
 
-/* ── RATING STAR ── */
-.stars{color:var(--a1);font-size:13px;letter-spacing:1px}
+  /* ===== MATRIX ===== */
+  .matrix-wrap {
+    background: var(--bg-card);
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    margin-bottom: 24px;
+  }
 
-/* ── DIVIDER ── */
-.div{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);margin:44px 0}
+  /* ===== FOOTER ===== */
+  .footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border);
+    margin-top: 12px;
+  }
 
-/* ── FOOTER ── */
-.footer{text-align:center;padding:28px 0;color:var(--tdim);font-size:12px;
-  border-top:1px solid var(--border);letter-spacing:1px}
-
-/* ── LIVE ── */
-.live{display:inline-flex;align-items:center;gap:6px}
-.ldot{width:6px;height:6px;border-radius:50%;background:var(--a1);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
-
-/* ── INSIGHT ── */
-.ins-list{display:flex;flex-direction:column;gap:12px}
-.ins-item{display:flex;gap:14px;align-items:flex-start;padding:13px 15px;
-  background:rgba(0,229,192,0.04);border-left:3px solid var(--a1);border-radius:0 8px 8px 0}
-.ins-item.warn{border-left-color:var(--red);background:rgba(255,84,112,0.04)}
-.ins-item.mid{border-left-color:var(--yellow);background:rgba(255,209,102,0.04)}
-.ins-icon{font-size:18px;flex-shrink:0;margin-top:1px}
-.ins-text{font-size:13px;color:var(--t2);line-height:1.75}
-.ins-text strong{color:var(--t1)}
-
-/* ── REC ── */
-.rec-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-bottom:36px}
-.rec{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;
-  position:relative;overflow:hidden;backdrop-filter:blur(12px);transition:all .3s}
-.rec::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;
-  background:linear-gradient(90deg,var(--rcs,var(--a1)),var(--rce,var(--a2)))}
-.rec:hover{border-color:var(--border2)}
-.rec-num{font-size:44px;font-weight:800;line-height:1;opacity:.18;position:absolute;right:14px;top:10px;
-  background:linear-gradient(135deg,var(--rcs,var(--a1)),var(--rce,var(--a2)));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.rec-tag{display:inline-block;padding:3px 12px;border-radius:12px;font-size:11px;font-weight:600;
-  background:rgba(0,229,192,0.1);color:var(--a1);border:1px solid rgba(0,229,192,0.25);
-  margin-bottom:10px;letter-spacing:1px}
-.rec-title{font-size:15px;font-weight:600;color:var(--t1);margin-bottom:9px}
-.rec-body{font-size:12.5px;color:var(--t2);line-height:1.85}
-.rec-body li{margin-bottom:4px}
-
-::-webkit-scrollbar{width:6px;background:var(--bg0)}
-::-webkit-scrollbar-thumb{background:rgba(0,229,192,0.2);border-radius:3px}
-
-/* ── 5-level sub dept ── */
-.sub5-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;margin-bottom:36px}
-.sub5{background:var(--card2);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .3s}
-.sub5:hover{border-color:var(--border2)}
-.sub5-hd{padding:14px 18px 10px;border-bottom:1px solid var(--border);
-  background:linear-gradient(135deg,rgba(0,180,216,0.07),transparent)}
-.sub5-hd .sname{font-size:14px;font-weight:600;color:var(--a2)}
-.sub5-hd .sparent{font-size:11px;color:var(--tdim);margin-top:2px}
-.sub5-body{padding:14px 18px}
-.sub5-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:12px}
-.sub5-lbl{color:var(--t3);width:72px;flex-shrink:0}
-.sub5-track{flex:1;height:5px;background:rgba(255,255,255,0.05);border-radius:3px;overflow:hidden}
-.sub5-fill{height:100%;border-radius:3px}
-.sub5-val{color:var(--t1);font-weight:600;width:32px;text-align:right}
-.sub5-members{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
-.sub5-m{font-size:11px;padding:2px 8px;background:rgba(0,180,216,0.08);
-  border:1px solid rgba(0,180,216,0.2);border-radius:8px;color:var(--a3)}
-.sub5-comment{font-size:12px;color:var(--t2);line-height:1.75;margin-top:10px;
-  padding:8px 12px;background:rgba(0,180,216,0.04);border-left:2px solid var(--a2);border-radius:0 6px 6px 0}
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1100px) {
+    .kpi-grid { grid-template-columns: repeat(3, 1fr); }
+    .dept-grid { grid-template-columns: 1fr 1fr; }
+  }
 </style>
 </head>
 <body>
-<div class="neb n1"></div>
-<div class="neb n2"></div>
-<div class="neb n3"></div>
 
-<div class="wrap">
+<!-- HEADER -->
+<div class="top-header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="header-badge">数智化协同及AI应用考评 · 总部 · 2026年1月</div>
+      <h1 class="header-title">数智化协同 & AI应用<br>综合考评分析报告</h1>
+      <p class="header-subtitle">覆盖总部全部四级/五级部门 · 184人AI考评 · 186人协同考评</p>
+    </div>
+    <div class="header-right">
+      <div class="header-stat"><div class="num">184</div><div class="lbl">AI考评人数</div></div>
+      <div class="header-stat"><div class="num">4.48</div><div class="lbl">AI综合均分</div></div>
+      <div class="header-stat"><div class="num">4.22</div><div class="lbl">协同综合均分</div></div>
+      <div class="header-stat"><div class="num">7</div><div class="lbl">四级部门数</div></div>
+    </div>
+  </div>
+</div>
 
-<!-- ══ HEADER ═══════════════════════════════════════════ -->
-<header class="header">
-  <div class="hbadge">DIGITAL INTELLIGENCE ANALYTICS REPORT</div>
-  <h1>数智化协同 & AI 应用考评<br>部门专项分析报告</h1>
-  <p class="hsub">
-    <span class="live"><span class="ldot"></span>实时数据</span>
-    &nbsp;·&nbsp; 董事长室 &nbsp;·&nbsp; 2026年 1月
-  </p>
-  <div class="hline"></div>
-</header>
+<!-- NAV -->
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <div class="nav-tab active" onclick="switchTab('overview',this)">📊 总览概况</div>
+    <div class="nav-tab" onclick="switchTab('l4dept',this)">🏢 四级部门分析</div>
+    <div class="nav-tab" onclick="switchTab('l5dept',this)">🗂️ 五级部门详情</div>
+    <div class="nav-tab" onclick="switchTab('detail',this)">📋 全员明细</div>
+    <div class="nav-tab" onclick="switchTab('insight',this)">💡 洞察诊断</div>
+    <div class="nav-tab" onclick="switchTab('suggest',this)">🚀 改善建议</div>
+  </div>
+</div>
 
-<!-- ══ KPI ════════════════════════════════════════════════ -->
-<section>
+<div class="main-wrap">
+
+<!-- ===== SECTION: 总览 ===== -->
+<div id="sec-overview" class="section active">
+
+  <!-- KPI CARDS -->
   <div class="kpi-grid">
-    <div class="kpi" style="--kc:#00e5c0"><div class="kpi-ic">🏢</div><div class="kpi-v">6</div><div class="kpi-l">四级部门数</div><div class="kpi-s">覆盖全部考评部门</div></div>
-    <div class="kpi" style="--kc:#00b4d8"><div class="kpi-ic">🗂️</div><div class="kpi-v">11</div><div class="kpi-l">五级部门/小组数</div><div class="kpi-s">细化到最小作战单元</div></div>
-    <div class="kpi" style="--kc:#48cae4"><div class="kpi-ic">👥</div><div class="kpi-v">17</div><div class="kpi-l">参评总人数</div><div class="kpi-s">AI考评 & 协同考评</div></div>
-    <div class="kpi" style="--kc:#00e5c0"><div class="kpi-ic">🧠</div><div class="kpi-v">4.28</div><div class="kpi-l">AI综合均分</div><div class="kpi-s">全员 · 满分5.0</div></div>
-    <div class="kpi" style="--kc:#0077b6"><div class="kpi-ic">🤝</div><div class="kpi-v">4.17</div><div class="kpi-l">协同综合均分</div><div class="kpi-s">全员 · 满分5.0</div></div>
-    <div class="kpi" style="--kc:#ff5470"><div class="kpi-ic">⚠️</div><div class="kpi-v">3</div><div class="kpi-l">低分预警人员</div><div class="kpi-s">AI得分 &lt; 2.0</div></div>
-  </div>
-</section>
-
-<!-- ══ SECTION 1: 四级部门总览 ═══════════════════════════ -->
-<section>
-  <div class="stitle"><span class="dot"></span>四级部门全景对比<span class="snum">01 / DEPT-L4 OVERVIEW</span></div>
-  <div class="g2">
-    <div class="card">
-      <div style="font-size:13px;color:var(--t2);margin-bottom:14px;letter-spacing:1px">📊 各四级部门 · AI综合得分均值</div>
-      <div class="cw"><canvas id="d4AiBar"></canvas></div>
+    <div class="kpi-card" style="--c1:#1a7cfa;--c2:#00c4b4;">
+      <div class="icon">🤖</div>
+      <div class="val">4.48<span class="unit"> /5</span></div>
+      <div class="lbl">AI综合评分均值</div>
+      <div class="badge badge-up">↑ 优秀水准</div>
     </div>
-    <div class="card">
-      <div style="font-size:13px;color:var(--t2);margin-bottom:14px;letter-spacing:1px">📊 各四级部门 · 协同综合得分均值</div>
-      <div class="cw"><canvas id="d4CoopBar"></canvas></div>
+    <div class="kpi-card" style="--c1:#00c4b4;--c2:#6c63ff;">
+      <div class="icon">🔗</div>
+      <div class="val">4.22<span class="unit"> /5</span></div>
+      <div class="lbl">协同工具综合均分</div>
+      <div class="badge badge-mid">良好水准</div>
     </div>
-  </div>
-  <div class="card">
-    <div style="font-size:13px;color:var(--t2);margin-bottom:14px;letter-spacing:1px">🔄 四级部门 · AI vs 协同双维雷达</div>
-    <div style="display:flex;justify-content:center;align-items:center;height:320px">
-      <div style="width:min(480px,100%)"><canvas id="d4Radar"></canvas></div>
+    <div class="kpi-card" style="--c1:#6c63ff;--c2:#1a7cfa;">
+      <div class="icon">💬</div>
+      <div class="val">12.6<span class="unit"> 次</span></div>
+      <div class="lbl">月均AI对话数量</div>
+      <div class="badge badge-up">积极使用</div>
     </div>
-  </div>
-</section>
-
-<!-- ══ SECTION 2: 四级部门点评卡片 ══════════════════════ -->
-<section>
-  <div class="stitle"><span class="dot"></span>四级部门深度点评<span class="snum">02 / DEPT-L4 REVIEW</span></div>
-  <div class="dept-grid" id="dept4Cards"></div>
-</section>
-
-<!-- ══ SECTION 3: 五级部门总览 ═══════════════════════════ -->
-<section>
-  <div class="stitle"><span class="dot"></span>五级部门/小组专项分析<span class="snum">03 / DEPT-L5 ANALYSIS</span></div>
-  <div class="g2">
-    <div class="card">
-      <div style="font-size:13px;color:var(--t2);margin-bottom:14px;letter-spacing:1px">📊 五级小组 · AI综合得分</div>
-      <div class="cwl"><canvas id="d5AiBar"></canvas></div>
+    <div class="kpi-card" style="--c1:#f5a623;--c2:#ff5f6d;">
+      <div class="icon">⚠️</div>
+      <div class="val">12<span class="unit"> 人</span></div>
+      <div class="lbl">AI极低分人数（<2分）</div>
+      <div class="badge badge-warn">需重点关注</div>
     </div>
-    <div class="card">
-      <div style="font-size:13px;color:var(--t2);margin-bottom:14px;letter-spacing:1px">📊 五级小组 · AI对话次数均值</div>
-      <div class="cwl"><canvas id="d5TalkBar"></canvas></div>
+    <div class="kpi-card" style="--c1:#1a7cfa;--c2:#6c63ff;">
+      <div class="icon">📄</div>
+      <div class="val">1284<span class="unit"> 份</span></div>
+      <div class="lbl">协同文档创建总量</div>
+      <div class="badge badge-mid">活跃协作</div>
+    </div>
+    <div class="kpi-card" style="--c1:#00c4b4;--c2:#1a7cfa;">
+      <div class="icon">🔔</div>
+      <div class="val">2898<span class="unit"> 份</span></div>
+      <div class="lbl">协同相关文档总量</div>
+      <div class="badge badge-up">高关联度</div>
     </div>
   </div>
-  <div class="sub5-grid" id="dept5Cards"></div>
-</section>
 
-<!-- ══ SECTION 4: 全员个人得分明细 ══════════════════════ -->
-<section>
-  <div class="stitle"><span class="dot"></span>全员数据明细（按部门排列）<span class="snum">04 / INDIVIDUAL DATA</span></div>
-  <div class="card" style="padding:0;overflow:hidden">
-    <div style="overflow-x:auto">
-      <table class="dt" id="mainTable">
-        <thead>
-          <tr>
-            <th>姓名</th><th>四级部门</th><th>五级小组</th><th>岗位</th>
-            <th>AI自评</th><th>AI综合分</th><th>AI对话数</th><th>AI绩效分</th>
-            <th>协同综合分</th><th>我的文档</th><th>相关文档</th><th>协同绩效</th>
-          </tr>
-        </thead>
-        <tbody id="mainTbody"></tbody>
-      </table>
+  <!-- CHARTS ROW 1 -->
+  <div class="two-col">
+    <div class="chart-card">
+      <div class="chart-card-title">📊 四级部门 AI综合得分对比</div>
+      <div class="chart-card-sub">各部门AI工具使用综合评分均值 · 满分5分</div>
+      <div class="chart-wrap"><canvas id="chart-l4-ai" height="220"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">📊 四级部门 协同综合得分对比</div>
+      <div class="chart-card-sub">各部门协同工具使用综合评分均值 · 满分5分</div>
+      <div class="chart-wrap"><canvas id="chart-l4-coop" height="220"></canvas></div>
     </div>
   </div>
-</section>
 
-<!-- ══ SECTION 5: 核心洞察 ═══════════════════════════════ -->
-<section>
-  <div class="stitle"><span class="dot"></span>核心洞察与问题诊断<span class="snum">05 / KEY INSIGHTS</span></div>
-  <div class="g2">
-    <div class="card">
-      <div style="font-size:13px;color:var(--a1);font-weight:600;margin-bottom:14px">✅ 优势亮点</div>
-      <div class="ins-list">
-        <div class="ins-item"><div class="ins-icon">🌟</div><div class="ins-text"><strong>财务部AI应用基础扎实：</strong>资金组6人AI均分4.63，月均对话9.2次，为全公司最大规模高均分团队，整体水平稳定且充分。</div></div>
-        <div class="ins-item"><div class="ins-icon">💡</div><div class="ins-text"><strong>数智科技组领军示范：</strong>资讯长吴丹AI对话28次、协同30篇，双维顶尖，是公司数智化标杆。</div></div>
-        <div class="ins-item"><div class="ins-icon">🤝</div><div class="ins-text"><strong>公共事务、投资组协同优秀：</strong>李昊（公共事务）、葛齐（投资组）协同得分4.8，文档质量高，在线协同习惯好。</div></div>
-        <div class="ins-item"><div class="ins-icon">🏅</div><div class="ins-text"><strong>法务组AI使用率良好：</strong>石颖AI得分4.8、16次对话，在法务类岗位中属高水平，证明专业型岗位AI赋能完全可行。</div></div>
+  <!-- CHARTS ROW 2 -->
+  <div class="two-col">
+    <div class="chart-card">
+      <div class="chart-card-title">🍩 AI得分分布</div>
+      <div class="chart-card-sub">184人综合得分段分布情况</div>
+      <div class="chart-wrap"><canvas id="chart-ai-dist" height="220"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">🍩 协同得分分布</div>
+      <div class="chart-card-sub">186人综合得分段分布情况</div>
+      <div class="chart-wrap"><canvas id="chart-coop-dist" height="220"></canvas></div>
+    </div>
+  </div>
+
+  <!-- CHARTS ROW 3 -->
+  <div class="two-col">
+    <div class="chart-card">
+      <div class="chart-card-title">🕸️ 四级部门双维雷达图</div>
+      <div class="chart-card-sub">AI均分 vs 协同均分 多维对比</div>
+      <div class="chart-wrap"><canvas id="chart-radar" height="280"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">📈 AI对话数量 vs AI综合得分（餐饮群总部子部门）</div>
+      <div class="chart-card-sub">使用频次与质量正相关性分析</div>
+      <div class="chart-wrap"><canvas id="chart-scatter" height="280"></canvas></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION: 四级部门 ===== -->
+<div id="sec-l4dept" class="section">
+  <div class="section-title">四级部门综合分析</div>
+  <div class="dept-grid">
+
+    <!-- 餐饮群总部 -->
+    <div class="dept-card" style="--dc1:#1a7cfa;--dc2:#00c4b4;">
+      <div class="dept-card-header">
+        <div class="dept-card-icon">🍽️</div>
+        <div>
+          <div class="dept-card-name">餐饮群总部</div>
+          <div class="dept-card-count">AI: 119人 · 协同: 121人</div>
+        </div>
+      </div>
+      <div class="dept-card-body">
+        <div class="score-row">
+          <span class="score-label">AI综合均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:91.4%"></div></div>
+          <span class="score-val" style="color:var(--accent1)">4.57</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">协同均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:85.4%"></div></div>
+          <span class="score-val" style="color:var(--accent2)">4.27</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">AI对话均值</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:66.5%"></div></div>
+          <span class="score-val" style="color:var(--accent3)">13.3次</span>
+        </div>
+        <div class="dept-sub-list">
+          <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">五级部门概览</div>
+          <div class="dept-sub-item"><span class="dept-sub-name">数智科技中心</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.58</span><span style="color:var(--accent2)">协同 4.42</span></div></div>
+          <div class="dept-sub-item"><span class="dept-sub-name">业务洞察分析部</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.70</span><span style="color:var(--accent2)">协同 4.70</span></div></div>
+          <div class="dept-sub-item"><span class="dept-sub-name">西式快餐事业本部</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.57</span><span style="color:var(--accent2)">协同 4.33</span></div></div>
+          <div class="dept-sub-item"><span class="dept-sub-name">中式快餐事业本部</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.68</span><span style="color:var(--accent2)">协同 3.96</span></div></div>
+          <div class="dept-sub-item"><span class="dept-sub-name">研发中心</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.45</span><span style="color:var(--accent2)">协同 4.02</span></div></div>
+        </div>
+        <div class="dept-comment">✅ <strong>亮点：</strong>人员规模最大（119人），AI和协同均分均高于全体均值，数智科技中心和业务洞察分析部表现尤为突出，对话数量活跃，是全公司数智化实践标杆。</div>
+        <div class="dept-suggest">💡 <strong>改善建议：</strong>中式快餐事业本部协同均分（3.96）明显低于AI（4.68），须推动协同工具深度使用；研发中心AI对话数量最高（17.27）但综合评分相对较低，建议优化AI使用场景匹配度，提升有效对话质量。</div>
       </div>
     </div>
-    <div class="card">
-      <div style="font-size:13px;color:var(--red);font-weight:600;margin-bottom:14px">⚠️ 问题诊断</div>
-      <div class="ins-list">
-        <div class="ins-item warn"><div class="ins-icon">🔴</div><div class="ins-text"><strong>战略企划部AI严重落后：</strong>李斌（策略长）AI综合仅1.5分、对话仅2次、月度绩效0分，陈玺羽（经营企划）同为1.5分，拉低整个部门均分至3.08，为最薄弱板块。</div></div>
-        <div class="ins-item warn"><div class="ins-icon">🔴</div><div class="ins-text"><strong>投资组协同严重不足：</strong>史懿晨协同得分仅2.5，文档内容偏行政化，与投资核心职责严重脱钩，AI与协同出现跛行。</div></div>
-        <div class="ins-item mid"><div class="ins-icon">🟡</div><div class="ins-text"><strong>法务部协同偏弱：</strong>法务部整体协同均分4.0，王敏崧协同3.5，法务专业文档沉淀不足，专业研判内容缺失。</div></div>
-        <div class="ins-item mid"><div class="ins-icon">🟡</div><div class="ins-text"><strong>董事长室协同极低：</strong>高敏慈AI使用频率高（25次），但协同文档仅1篇，月度协同绩效仅3分，AI与协同严重失衡。</div></div>
+
+    <!-- 大TQ人力发展中心 -->
+    <div class="dept-card" style="--dc1:#00c4b4;--dc2:#6c63ff;">
+      <div class="dept-card-header">
+        <div class="dept-card-icon">👥</div>
+        <div>
+          <div class="dept-card-name">大TQ人力发展中心</div>
+          <div class="dept-card-count">AI: 16人 · 协同: 16人</div>
+        </div>
+      </div>
+      <div class="dept-card-body">
+        <div class="score-row">
+          <span class="score-label">AI综合均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:93.4%"></div></div>
+          <span class="score-val" style="color:var(--accent1)">4.67</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">协同均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:79%"></div></div>
+          <span class="score-val" style="color:var(--accent2)">3.95</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">AI对话均值</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:75.3%"></div></div>
+          <span class="score-val" style="color:var(--accent3)">15.1次</span>
+        </div>
+        <div class="dept-sub-list">
+          <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">五级部门概览</div>
+          <div class="dept-sub-item"><span class="dept-sub-name">大TQ业务支持组</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.67</span><span style="color:var(--accent2)">协同 4.00</span></div></div>
+        </div>
+        <div class="dept-comment">✅ <strong>亮点：</strong>AI使用频次高（15.1次/人），AI均分4.67属于优秀水准，HR团队整体对AI工具的接受度和使用积极性较高，AI绩效均分全员满分（7.0）。</div>
+        <div class="dept-suggest">💡 <strong>改善建议：</strong>协同均分（3.95）明显低于AI均分（4.67），AI与协同双轮发展存在明显落差。建议重点提升协同工具的日常应用频次，特别是文档协作和知识沉淀功能，将AI处理的成果通过协同平台结构化输出，打通AI→协同的完整数智化工作流。</div>
+      </div>
+    </div>
+
+    <!-- 大TQ财务中心 -->
+    <div class="dept-card" style="--dc1:#ff5f6d;--dc2:#f5a623;">
+      <div class="dept-card-header">
+        <div class="dept-card-icon">💰</div>
+        <div>
+          <div class="dept-card-name">大TQ财务中心</div>
+          <div class="dept-card-count">AI: 24人 · 协同: 24人</div>
+        </div>
+      </div>
+      <div class="dept-card-body">
+        <div class="score-row">
+          <span class="score-label">AI综合均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:78%;background:linear-gradient(90deg,#ff5f6d,#f5a623)"></div></div>
+          <span class="score-val" style="color:#ff5f6d">3.90</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">协同均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:79.4%;background:linear-gradient(90deg,#ff5f6d,#f5a623)"></div></div>
+          <span class="score-val" style="color:#ff5f6d">3.97</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">AI对话均值</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:42.1%;background:linear-gradient(90deg,#ff5f6d,#f5a623)"></div></div>
+          <span class="score-val" style="color:#ff5f6d">8.4次</span>
+        </div>
+        <div class="dept-sub-list">
+          <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">五级部门概览</div>
+          <div class="dept-sub-item"><span class="dept-sub-name">大TQ账务组（24人）</span><div class="dept-sub-scores"><span style="color:#ff5f6d">AI 3.90</span><span style="color:#f5a623">协同 3.97</span></div></div>
+        </div>
+        <div class="dept-comment">⚠️ <strong>现状：</strong>AI（3.90）和协同（3.97）均分均为全公司七大四级部门中最低，AI对话数量（8.4次）偏低，AI绩效均分5.12分（满分7），为全员最低。大TQ账务组是唯一四级部门下只有一个五级组的单元，规模最大（24人）、整体数智化水平有明显提升空间。</div>
+        <div class="dept-suggest">💡 <strong>改善建议：</strong>①制定财务场景专项AI应用清单（凭证处理、报表分析、税务查询等）；②开展AI应用工作坊，设立"AI提效示范岗"；③建立周度AI对话量激励机制，将数智化参与度纳入绩效评估；④推进协同文档在账务流程中的标准化应用。目标：3个月内AI均分提升至4.3+，对话均值达到12+次。</div>
+      </div>
+    </div>
+
+    <!-- 大TQ食品安全中心 -->
+    <div class="dept-card" style="--dc1:#6c63ff;--dc2:#00c4b4;">
+      <div class="dept-card-header">
+        <div class="dept-card-icon">🛡️</div>
+        <div>
+          <div class="dept-card-name">大TQ食品安全中心</div>
+          <div class="dept-card-count">AI: 15人 · 协同: 15人</div>
+        </div>
+      </div>
+      <div class="dept-card-body">
+        <div class="score-row">
+          <span class="score-label">AI综合均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:89.4%"></div></div>
+          <span class="score-val" style="color:var(--accent1)">4.47</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">协同均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:88.8%"></div></div>
+          <span class="score-val" style="color:var(--accent2)">4.44</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">AI对话均值</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:55.4%"></div></div>
+          <span class="score-val" style="color:var(--accent3)">11.1次</span>
+        </div>
+        <div class="dept-sub-list">
+          <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">五级部门概览</div>
+          <div class="dept-sub-item"><span class="dept-sub-name">大TQ工厂组（11人）</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.65</span><span style="color:var(--accent2)">协同 4.42</span></div></div>
+          <div class="dept-sub-item"><span class="dept-sub-name">大TQ门店组（3人）</span><div class="dept-sub-scores"><span style="color:#f5a623">AI 3.67</span><span style="color:var(--accent2)">协同 4.50</span></div></div>
+        </div>
+        <div class="dept-comment">✅ <strong>亮点：</strong>AI和协同双均分均衡（分差仅0.03），在非IT专业部门中表现优秀，大TQ工厂组AI均分4.65尤为突出，整体数智化双轮驱动态势良好。</div>
+        <div class="dept-suggest">💡 <strong>改善建议：</strong>大TQ门店组AI均分（3.67）明显低于工厂组（4.65），建议针对门店场景开发专属AI提示词和标准应用场景；提升整体AI对话频次，从11.1次向15+次目标推进；可借鉴工厂组优秀实践向门店输出。</div>
+      </div>
+    </div>
+
+    <!-- 大TQ法务及合规部 -->
+    <div class="dept-card" style="--dc1:#f5a623;--dc2:#6c63ff;">
+      <div class="dept-card-header">
+        <div class="dept-card-icon">⚖️</div>
+        <div>
+          <div class="dept-card-name">大TQ法务及合规部</div>
+          <div class="dept-card-count">AI: 4人 · 协同: 4人</div>
+        </div>
+      </div>
+      <div class="dept-card-body">
+        <div class="score-row">
+          <span class="score-label">AI综合均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:78%;background:linear-gradient(90deg,#f5a623,#6c63ff)"></div></div>
+          <span class="score-val" style="color:#f5a623">3.90</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">协同均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:89%"></div></div>
+          <span class="score-val" style="color:var(--accent2)">4.45</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">AI对话均值</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:37.5%"></div></div>
+          <span class="score-val" style="color:#f5a623">7.5次</span>
+        </div>
+        <div class="dept-sub-list">
+          <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">五级部门概览</div>
+          <div class="dept-sub-item"><span class="dept-sub-name">大TQ合规及内控组（2人）</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.80</span><span style="color:var(--accent2)">协同 4.40</span></div></div>
+          <div class="dept-sub-item"><span class="dept-sub-name">大TQ法务组（2人）</span><div class="dept-sub-scores"><span style="color:#ff5f6d">AI 3.00</span><span style="color:var(--accent2)">协同 4.50</span></div></div>
+        </div>
+        <div class="dept-comment">⚠️ <strong>现状：</strong>两个五级部门分化严重——合规及内控组AI均分4.80表现优秀，但法务组AI均分仅3.00（含得分1.5极低分），对话数量仅6次，AI绩效均分3.5（满分7），是全体最低档之一。协同表现相对均衡，整体还不错。</div>
+        <div class="dept-suggest">💡 <strong>改善建议：</strong>①针对法务组开展AI使用专题辅导，聚焦法律文书起草、合同审查、法规查询等高价值场景；②以合规及内控组作为内部标杆，开展经验分享；③设立法务场景AI应用工具箱；④AI绩效考核配合短期激励措施，3个月内目标提升至4.5+。</div>
+      </div>
+    </div>
+
+    <!-- 大TQ执行长办公室 -->
+    <div class="dept-card" style="--dc1:#1a7cfa;--dc2:#6c63ff;">
+      <div class="dept-card-header">
+        <div class="dept-card-icon">🏛️</div>
+        <div>
+          <div class="dept-card-name">大TQ执行长办公室</div>
+          <div class="dept-card-count">AI: 5人 · 协同: 5人</div>
+        </div>
+      </div>
+      <div class="dept-card-body">
+        <div class="score-row">
+          <span class="score-label">AI综合均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:95.6%"></div></div>
+          <span class="score-val" style="color:var(--accent1)">4.78</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">协同均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:87.2%"></div></div>
+          <span class="score-val" style="color:var(--accent2)">4.36</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">AI对话均值</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:82%"></div></div>
+          <span class="score-val" style="color:var(--accent3)">16.4次</span>
+        </div>
+        <div class="dept-sub-list">
+          <div style="font-size:12px;font-weight:600;color:var(--text-secondary);margin-bottom:6px;">五级部门概览</div>
+          <div class="dept-sub-item"><span class="dept-sub-name">大TQ经营企划组（4人）</span><div class="dept-sub-scores"><span style="color:var(--accent1)">AI 4.78</span><span style="color:var(--accent2)">协同 4.32</span></div></div>
+        </div>
+        <div class="dept-comment">✅ <strong>亮点：</strong>AI均分（4.78）和AI对话数量（16.4次/人）在7个四级部门中均位居前列，绩效满分，是管理层数智化意识和应用能力的有力示范。</div>
+        <div class="dept-suggest">💡 <strong>改善建议：</strong>协同均分（4.36）相对AI使用水平偏低，建议强化会议纪要、战略文档等高价值协同场景；发挥示范带头作用，向下属部门推广AI高频应用实践；考虑建立总部AI应用经验分享机制。</div>
+      </div>
+    </div>
+
+    <!-- 大TQ执董办公室 -->
+    <div class="dept-card" style="--dc1:#00c4b4;--dc2:#1a7cfa;">
+      <div class="dept-card-header">
+        <div class="dept-card-icon">📋</div>
+        <div>
+          <div class="dept-card-name">大TQ执董办公室</div>
+          <div class="dept-card-count">AI: 1人 · 协同: 1人</div>
+        </div>
+      </div>
+      <div class="dept-card-body">
+        <div class="score-row">
+          <span class="score-label">AI综合均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:96%"></div></div>
+          <span class="score-val" style="color:var(--accent1)">4.80</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">协同均分</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:80%"></div></div>
+          <span class="score-val" style="color:var(--accent2)">4.00</span>
+        </div>
+        <div class="score-row">
+          <span class="score-label">AI对话均值</span>
+          <div class="score-bar-wrap"><div class="score-bar" style="width:95%"></div></div>
+          <span class="score-val" style="color:var(--accent3)">19次</span>
+        </div>
+        <div class="dept-comment">✅ <strong>亮点：</strong>AI使用频次极高（19次），AI均分4.80，是最高档的个人使用者，对高层示范效应具有正向影响。</div>
+        <div class="dept-suggest">💡 <strong>改善建议：</strong>协同均分（4.00）相对偏低（文档创建4份），建议推动重要决策和会议内容的协同平台沉淀，将AI产出转化为可共享的组织知识资产。</div>
+      </div>
+    </div>
+
+  </div><!-- /dept-grid -->
+
+  <!-- 四级部门综合排名 -->
+  <div class="chart-card">
+    <div class="chart-card-title">📊 四级部门综合横向对比（AI·协同·对话量）</div>
+    <div class="chart-card-sub">归一化后的多维度对比图</div>
+    <div class="chart-wrap"><canvas id="chart-l4-multi" height="160"></canvas></div>
+  </div>
+</div>
+
+<!-- ===== SECTION: 五级部门详情 ===== -->
+<div id="sec-l5dept" class="section">
+  <div class="section-title">五级部门专项分析</div>
+
+  <!-- 餐饮群总部五级 -->
+  <div style="font-size:15px;font-weight:700;color:var(--accent1);margin-bottom:14px;padding-left:12px;border-left:4px solid var(--accent1);">
+    🍽️ 餐饮群总部 — 五级部门详情
+  </div>
+  <div class="two-col" style="margin-bottom:24px;">
+    <div class="chart-card">
+      <div class="chart-card-title">AI综合均分 · 五级部门对比</div>
+      <div class="chart-wrap"><canvas id="chart-l5-ai-tq" height="220"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">协同综合均分 · 五级部门对比</div>
+      <div class="chart-wrap"><canvas id="chart-l5-coop-tq" height="220"></canvas></div>
+    </div>
+  </div>
+
+  <!-- 五级部门详细卡片 -->
+  <div class="suggest-grid" style="margin-bottom:24px;">
+    <div class="suggest-card">
+      <div class="suggest-num">A</div>
+      <div class="suggest-title">业务洞察分析部（5人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-a">AI 4.70</span><span class="tag tag-b">协同 4.70</span><span class="tag tag-b">对话 7.6次</span>
+      </div>
+      <div class="suggest-text">AI和协同双均分4.70，是全员五级部门最均衡的标杆单元，5人满分率极高，代表数据分析岗AI深度应用最佳实践。</div>
+      <div class="suggest-tag">💡 建议：输出方法论，推广至其他分析类岗位</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">B</div>
+      <div class="suggest-title">数智科技中心（29/30人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-a">AI 4.58</span><span class="tag tag-b">协同 4.42</span><span class="tag tag-b">对话 14.7次</span>
+      </div>
+      <div class="suggest-text">人数最多（29+30人），AI对话频次高（14.7次），技术人员使用深度和广度俱佳，协同文档量显著领先（均值10.9份/人创建，25.6相关）。</div>
+      <div class="suggest-tag">💡 建议：补足协同深度，减少1.5低分人员</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">C</div>
+      <div class="suggest-title">西式快餐事业本部（51人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-a">AI 4.57</span><span class="tag tag-b">协同 4.33</span><span class="tag tag-c">对话 13.2次</span>
+      </div>
+      <div class="suggest-text">人数最多的五级部门，整体成绩良好，相关文档量高（均值20.7），但有2名AI低分人员，品牌行销部分人员得分偏低（1.5分）需重点关注。</div>
+      <div class="suggest-tag">💡 建议：针对低分人员专项辅导，消除尾部</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">D</div>
+      <div class="suggest-title">中式快餐事业本部（17人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-a">AI 4.68</span><span class="tag tag-d">协同 3.96</span><span class="tag tag-c">对话 10.2次</span>
+      </div>
+      <div class="suggest-text">AI均分表现出色（4.68），但协同均分（3.96）明显落后，文档创建均值仅4.06份，AI与协同发展明显失衡，有2名协同低分人员。</div>
+      <div class="suggest-tag">💡 紧急：补足协同短板，推动文档习惯养成</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">E</div>
+      <div class="suggest-title">研发中心（15/16人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-b">AI 4.45</span><span class="tag tag-c">协同 4.02</span><span class="tag tag-a">对话 17.3次</span>
+      </div>
+      <div class="suggest-text">AI对话数量全员最高（17.3次），但综合评分相对较低，说明对话频次高但质量有提升空间；协同均分4.02，有1名各类低分人员。</div>
+      <div class="suggest-tag">💡 建议：聚焦AI质量提升，优化应用场景选择</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">F</div>
+      <div class="suggest-title">总经办（2人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-c">AI 4.00</span><span class="tag tag-c">协同 4.00</span><span class="tag tag-d">对话 6.5次</span>
+      </div>
+      <div class="suggest-text">样本量小，AI和协同均分同为4.00，对话数量（6.5次）为餐饮群总部中最低，管理层使用频次有待提升。</div>
+      <div class="suggest-tag">💡 建议：提升管理层使用频次，以身作则示范</div>
+    </div>
+  </div>
+
+  <!-- 其他四级部门五级 -->
+  <div style="font-size:15px;font-weight:700;color:var(--accent2);margin:28px 0 14px;padding-left:12px;border-left:4px solid var(--accent2);">
+    🏢 其他四级部门 — 五级小组详情
+  </div>
+  <div class="two-col">
+    <div class="chart-card">
+      <div class="chart-card-title">AI均分 · 其他部门五级小组</div>
+      <div class="chart-wrap"><canvas id="chart-l5-ai-other" height="250"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-title">协同均分 · 其他部门五级小组</div>
+      <div class="chart-wrap"><canvas id="chart-l5-coop-other" height="250"></canvas></div>
+    </div>
+  </div>
+
+  <div class="suggest-grid" style="margin-top:20px;">
+    <div class="suggest-card">
+      <div class="suggest-num">G</div>
+      <div class="suggest-title">大TQ合规及内控组（2人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-a">AI 4.80</span><span class="tag tag-b">协同 4.40</span>
+      </div>
+      <div class="suggest-text">法务合规部门中的优秀单元，AI使用积极，建议将合规审查、法规比对等AI应用经验向同部门法务组共享推广。</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">H</div>
+      <div class="suggest-title">大TQ法务组（2人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-d">AI 3.00</span><span class="tag tag-b">协同 4.50</span>
+      </div>
+      <div class="suggest-text">AI均分3.00为全员最低区间，含1名1.5分极低分人员，协同使用反而良好（4.50），说明存在AI认知和应用技能缺口，非意愿问题。需专项培训。</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">I</div>
+      <div class="suggest-title">大TQ账务组（24人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-d">AI 3.90</span><span class="tag tag-d">协同 3.97</span><span class="tag tag-d">对话 8.4次</span>
+      </div>
+      <div class="suggest-text">规模最大（24人）的单一五级部门，AI和协同双分双低，对话量偏少，整体处于全员末尾，是最需要系统性干预的核心重点单元。</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">J</div>
+      <div class="suggest-title">大TQ工厂组（11人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-a">AI 4.65</span><span class="tag tag-b">协同 4.42</span>
+      </div>
+      <div class="suggest-text">食品安全中心中的优秀代表，AI绩效满分（7.0），双均衡发展，工厂生产场景的AI和协同工具深度融合是行业内不多见的标杆实践。</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">K</div>
+      <div class="suggest-title">大TQ门店组（3人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-c">AI 3.67</span><span class="tag tag-b">协同 4.50</span>
+      </div>
+      <div class="suggest-text">与工厂组差距明显（AI差近1分），门店场景AI应用明显不足，建议借鉴工厂组经验，开发适合门店巡检、培训等场景的AI应用工具。</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">L</div>
+      <div class="suggest-title">大TQ经营企划组（4人）</div>
+      <div style="display:flex;gap:12px;margin-bottom:10px;">
+        <span class="tag tag-a">AI 4.78</span><span class="tag tag-b">协同 4.32</span><span class="tag tag-a">对话 15.8次</span>
+      </div>
+      <div class="suggest-text">管理层支持下的经营企划团队，AI使用频次高、质量优，是总部管理职能部门中的榜样单元，协同使用可进一步加强文档沉淀。</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION: 全员明细 ===== -->
+<div id="sec-detail" class="section">
+  <div class="section-title">全员数据明细</div>
+  <div class="table-wrap">
+    <div class="table-head-bar">
+      <span class="table-title">AI考评明细（部分代表性人员）</span>
+      <input class="table-search" type="text" id="searchInput" placeholder="搜索姓名/部门..." oninput="filterTable()">
+    </div>
+    <div style="overflow-x:auto;max-height:500px;overflow-y:auto;">
+    <table id="detailTable">
+      <thead>
+        <tr>
+          <th>姓名</th><th>岗位</th><th>四级部门</th><th>五级部门</th>
+          <th>AI综合得分</th><th>AI对话数量</th><th>AI绩效分</th>
+          <th>协同得分</th><th>协同绩效分</th><th>等级</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION: 洞察诊断 ===== -->
+<div id="sec-insight" class="section">
+  <div class="section-title">核心洞察诊断</div>
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-card-title" style="color:var(--accent2)">✅ 优势亮点（Strengths）</div>
+      <ul class="insight-list">
+        <li>AI整体均分（4.48）远超协同均分（4.22），184人中115人AI得分达到4.5优秀档，整体AI工具普及度高，使用意愿强烈</li>
+        <li>业务洞察分析部、大TQ执行长办公室、大TQ执董办公室三个部门AI均分均达4.70+，代表总部高层及专业分析岗AI应用的最佳水平</li>
+        <li>数智科技中心协同文档量显著领先（均值10.9份创建、25.6相关），协同工作方式已成团队日常习惯，形成知识沉淀机制</li>
+        <li>大TQ人力发展中心AI对话频次高（15.1次），HR岗位对AI的应用已从招聘、培训、绩效等多维度渗透，人力数智化走在前列</li>
+        <li>大TQ执行长办公室及经营企划组AI绩效均分全员满分，证明管理层数智化领头作用显著，自上而下的示范效应清晰可见</li>
+      </ul>
+    </div>
+    <div class="insight-card">
+      <div class="insight-card-title" style="color:var(--accent-warn)">⚠️ 问题诊断（Issues）</div>
+      <ul class="insight-list">
+        <li>大TQ账务组（24人）AI均分3.90、对话量仅8.4次，是全员规模最大的低分群体，财务职能的数智化转型严重滞后，须优先干预</li>
+        <li>全员有12人AI得分极低（&lt;2分），分布在西式快餐行销部、研发中心等，说明个体认知和能力缺口并非集中于某一部门，系分散性问题</li>
+        <li>AI与协同发展失衡：中式快餐事业本部AI均分4.68但协同均分3.96，大TQ人力发展中心AI均分4.67但协同均分3.95，反映"会用AI不会用协同平台"的结构性断层</li>
+        <li>大TQ法务组AI均分3.00，含极低分个体（1.5分），协同工具使用（4.50）却表现正常，表明AI技能缺口是该组核心短板，应针对法律专业场景设计AI培训方案</li>
+        <li>协同分布偏低：186人中仅33人达到4.5优秀档，96人在4.0-4.5的良好区间，但仍有55人在4.0以下（包括16人差档+2人极差），协同工具深度应用亟待整体提升</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="insight-grid">
+    <div class="insight-card">
+      <div class="insight-card-title" style="color:var(--accent1)">📈 趋势机会（Opportunities）</div>
+      <ul class="insight-list">
+        <li>研发中心AI对话频次高达17.3次/人，位居各部门第一，若在优化对话质量和场景匹配上取得突破，有望成为下一个高分标杆部门</li>
+        <li>协同整体均分（4.22）较AI（4.48）低0.26分，但协同使用与AI使用存在强正相关，AI工具的提升将联动带动协同指标上升</li>
+        <li>总部覆盖184-186人的规模样本，为建立个性化AI能力成长路径、按岗位分层设计培训提供了充分的数据基础</li>
+        <li>高层管理者（执行长办公室、执董办公室）AI均分均超4.78，可借助管理层影响力推动全员数智化文化氛围，形成从上到下的行为示范链</li>
+      </ul>
+    </div>
+    <div class="insight-card">
+      <div class="insight-card-title" style="color:var(--accent4)">🔻 风险预警（Risks）</div>
+      <ul class="insight-list">
+        <li>若大TQ账务组（24人）持续低分，财务数字化转型将形成全公司最大的数智化洼地，影响跨部门协作效率和数据质量</li>
+        <li>12名AI极低分人员若未被纳入专项干预计划，可能形成"数智化边缘群体"，造成团队内部数字落差，影响整体文化推进</li>
+        <li>AI与协同双低分的大TQ账务组，面临AI绩效考核评分不达标风险（AI绩效均分5.12，与满分7.0差距明显），可能影响绩效考核公平性认知</li>
+        <li>部分大规模部门（西快51人、中快17人）存在零星低分个体，若未能及时识别和干预，可能在下季度考评中持续拖低整体均值</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SECTION: 改善建议 ===== -->
+<div id="sec-suggest" class="section">
+  <div class="section-title">提升改善建议</div>
+  <div class="suggest-grid">
+    <div class="suggest-card">
+      <div class="suggest-num">01</div>
+      <div class="suggest-title">🚨 优先干预：大TQ账务组</div>
+      <div class="suggest-text">针对24人账务团队制定「财务AI专项提升计划」：开发财务场景AI提示词库（凭证处理/报表分析/税务查询）、设立每周AI对话激励排行、指派数智科技中心1-2名成员担任专属辅导员，90天内目标均分提升至4.3+，对话量达到12+次。</div>
+      <div class="suggest-tag">🔴 紧急 · 90天见效</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">02</div>
+      <div class="suggest-title">🎯 个体攻坚：消灭极低分</div>
+      <div class="suggest-text">对AI得分低于2.0的12名人员建立「一人一方案」辅导机制：逐一分析低分原因（认知/技能/意愿）、制定个性化提升路径、配对高分人员作为AI使用搭档，并通过绩效面谈形成明确改进承诺，30天内完成首轮复评。</div>
+      <div class="suggest-tag">🔴 紧急 · 30天首检</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">03</div>
+      <div class="suggest-title">⚖️ 法务组AI专项培训</div>
+      <div class="suggest-text">大TQ法务组AI均分仅3.00，以合规及内控组（4.80）为内部师资，开展法律专业场景AI应用工作坊：法律文书起草、合同合规审查、法规智能查询、判例分析等，2个月内目标均分提升至4.3+，填平组内差距。</div>
+      <div class="suggest-tag">🟠 重要 · 60天见效</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">04</div>
+      <div class="suggest-title">🔗 AI→协同贯通工程</div>
+      <div class="suggest-text">针对AI高分但协同低分的部门（中快、大TQ人力），推动"AI产出协同化"工作流改造：AI分析结果自动沉淀为协同文档、AI会议记录推送至协同平台、制定各部门AI×协同联动场景手册，目标双均分差距缩减至0.2分以内。</div>
+      <div class="suggest-tag">🟠 重要 · 90天见效</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">05</div>
+      <div class="suggest-title">⭐ 标杆引领：建立经验共享机制</div>
+      <div class="suggest-text">以业务洞察分析部（AI+协同双4.70）、大TQ工厂组、数智科技中心为标杆，每月举办1次「数智化标杆实践分享会」，建立跨部门AI应用案例库，让优秀实践快速扩散至全员，特别是财务、法务等数智化滞后部门。</div>
+      <div class="suggest-tag">🟡 中期 · 持续推进</div>
+    </div>
+    <div class="suggest-card">
+      <div class="suggest-num">06</div>
+      <div class="suggest-title">📊 体系化：KPI考核机制优化</div>
+      <div class="suggest-text">建议将数智化双均分纳入部门KPI体系：①AI均分≥4.3为达标线；②月均对话量≥12次为活跃标准；③设立部门协同文档创建最低量指标；④每季度公布部门排名，与团队荣誉奖励挂钩；2026年Q2目标：全员AI均分≥4.5，协同均分≥4.3。</div>
+      <div class="suggest-tag">🟡 战略 · 季度跟踪</div>
+    </div>
+  </div>
+
+  <!-- 目标路径 -->
+  <div class="matrix-wrap">
+    <div class="chart-card-title" style="margin-bottom:16px;">🗺️ 改善目标路径图（2026年Q1-Q3）</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+      <div style="background:linear-gradient(135deg,#e8f3ff,#e8faf5);border-radius:10px;padding:18px;border:1px solid var(--border);">
+        <div style="font-size:13px;font-weight:700;color:var(--accent1);margin-bottom:10px;">📅 第1阶段（1-30天）</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.8;">
+          ✓ 识别12名低分人员，建立个案档案<br>
+          ✓ 启动法务组AI专项培训<br>
+          ✓ 大TQ账务组启动财务AI场景库开发<br>
+          ✓ 完成第一批标杆经验采集
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#e8faf5,#eef2ff);border-radius:10px;padding:18px;border:1px solid var(--border);">
+        <div style="font-size:13px;font-weight:700;color:var(--accent2);margin-bottom:10px;">📅 第2阶段（31-90天）</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.8;">
+          ✓ 账务组AI均分目标≥4.3<br>
+          ✓ 法务组AI均分目标≥4.3<br>
+          ✓ 举办2期跨部门标杆分享会<br>
+          ✓ 推进AI→协同工作流改造
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,#eef2ff,#fff8e8);border-radius:10px;padding:18px;border:1px solid var(--border);">
+        <div style="font-size:13px;font-weight:700;color:var(--accent3);margin-bottom:10px;">📅 第3阶段（91-180天）</div>
+        <div style="font-size:12px;color:var(--text-secondary);line-height:1.8;">
+          ✓ 全员AI均分≥4.5<br>
+          ✓ 全员协同均分≥4.3<br>
+          ✓ 低分人员清零（AI&lt;3.5）<br>
+          ✓ 建立常态化数智化考评体系
+        </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<div class="div"></div>
+</div><!-- /main-wrap -->
 
-<!-- ══ SECTION 6: 改善建议 ════════════════════════════════ -->
-<section>
-  <div class="stitle"><span class="dot"></span>改善提升策略建议<span class="snum">06 / RECOMMENDATIONS</span></div>
-  <div class="rec-grid">
-    <div class="rec" style="--rcs:#00e5c0;--rce:#00b4d8">
-      <span class="rec-num">01</span>
-      <div class="rec-tag">紧急干预</div>
-      <div class="rec-title">战略企划部 · 专项辅导计划</div>
-      <div class="rec-body"><ul style="padding-left:16px">
-        <li>对李斌、陈玺羽进行1对1 AI场景化辅导，制定策略岗专属使用清单</li>
-        <li>明确最低月对话标准≥10次，设30天复盘节点</li>
-        <li>为投资组制定专业文档模版（研究报告、项目追踪、战略分析等）</li>
-        <li>史懿晨协同文档需切换至投资核心业务内容，行政文档降比例</li>
-      </ul></div>
-    </div>
-    <div class="rec" style="--rcs:#0077b6;--rce:#48cae4">
-      <span class="rec-num">02</span>
-      <div class="rec-tag">制度建设</div>
-      <div class="rec-title">建立双轮考评与预警机制</div>
-      <div class="rec-body"><ul style="padding-left:16px">
-        <li>AI与协同各占50%权重纳入月度绩效，两维度任一&lt;3.5触发辅导预警</li>
-        <li>设部门级最低达标线：AI均分≥4.0、协同均分≥4.0</li>
-        <li>战略企划部、法务部列为Q1重点跟踪部门，每两周上报进度</li>
-        <li>将考评分数与晋升资格、培训资源优先级挂钩</li>
-      </ul></div>
-    </div>
-    <div class="rec" style="--rcs:#48cae4;--rce:#00e5c0">
-      <span class="rec-num">03</span>
-      <div class="rec-tag">工具赋能</div>
-      <div class="rec-title">分岗位AI使用场景手册输出</div>
-      <div class="rec-body"><ul style="padding-left:16px">
-        <li>策略岗：市场分析、竞品研究、战略报告初稿生成</li>
-        <li>法务岗：合同审查要点提炼、法规解读、风险点梳理</li>
-        <li>行政岗：会议纪要整理、公文起草、流程优化建议</li>
-        <li>开展月度AI分享会，由吴丹、李昊等标杆人员讲解实战经验</li>
-      </ul></div>
-    </div>
-    <div class="rec" style="--rcs:#00b4d8;--rce:#0077b6">
-      <span class="rec-num">04</span>
-      <div class="rec-tag">协同深化</div>
-      <div class="rec-title">在线文档专业化与规范化</div>
-      <div class="rec-body"><ul style="padding-left:16px">
-        <li>每岗每月至少创建3篇与核心职责直接相关的专业文档</li>
-        <li>法务部新增：合规分析报告、风险评估模版、案例库等</li>
-        <li>董事长室高敏慈：将AI对话成果沉淀为可共享的在线文档</li>
-        <li>设"文档贡献度"指标：专业文档占比须≥60%</li>
-      </ul></div>
-    </div>
-    <div class="rec" style="--rcs:#00e5c0;--rce:#48cae4">
-      <span class="rec-num">05</span>
-      <div class="rec-tag">标杆引领</div>
-      <div class="rec-title">发挥先行者部门的示范效应</div>
-      <div class="rec-body"><ul style="padding-left:16px">
-        <li>表彰财务部资金组（团队AI均分4.63）为"数智先锋团队"</li>
-        <li>认定吴丹（资讯长）、李昊（公共事务）、游利亚（资金组）为数智大使</li>
-        <li>建立跨部门经验共享机制，数智科技组向战略企划部输出辅导</li>
-        <li>将优秀案例录入知识库，新员工入职必读</li>
-      </ul></div>
-    </div>
-    <div class="rec" style="--rcs:#ffd166;--rce:#00b4d8">
-      <span class="rec-num">06</span>
-      <div class="rec-tag">目标路径</div>
-      <div class="rec-title">分阶段达成目标规划</div>
-      <div class="rec-body"><ul style="padding-left:16px">
-        <li><strong>Q1末：</strong>AI均分≥4.4，无部门均分低于3.5，协同≥4.2</li>
-        <li><strong>Q2：</strong>AI均分≥4.5，月均对话≥12次，协同均分≥4.4</li>
-        <li><strong>Q3：</strong>全员AI绩效满分比≥65%，协同文档专业占比≥70%</li>
-        <li>每月发布部门排名通报，形成内部良性竞争氛围</li>
-      </ul></div>
-    </div>
-  </div>
-</section>
-
-<footer class="footer">
-  <div style="margin-bottom:6px">数智化协同及AI应用考评分析报告 · 董事长室 · 2026年1月</div>
-  <div>数科-人本部门出品 · 数据来源：考评填报系统 · 报告日期：2026.03.25</div>
-</footer>
+<div class="footer">
+  数智化协同及AI应用考评分析报告 · 总部 · 2026年1月 &nbsp;|&nbsp; 数科-人本 出品 &nbsp;|&nbsp; 报告生成日期：2026年3月25日
 </div>
 
 <script>
-// ═══════════════════════════════════════════════════════
-// DATA
-// ═══════════════════════════════════════════════════════
-const people = [
-  {name:'查姗姗',role:'资金专员',     d3:'便利餐饮连锁事业财务部',         d4:'便利餐饮连锁事业资金组',             aiSelf:3.7, aiScore:4.7, aiTalk:8,  aiPerf:7, coopScore:4.5, myDoc:6,  relDoc:13, coopPerf:12.5},
-  {name:'胡紫怡',role:'资金专员',     d3:'便利餐饮连锁事业财务部',         d4:'便利餐饮连锁事业资金组',             aiSelf:5.0, aiScore:4.8, aiTalk:12, aiPerf:7, coopScore:3.0, myDoc:1,  relDoc:10, coopPerf:8.0},
-  {name:'冯荟萃',role:'资金专员',     d3:'便利餐饮连锁事业财务部',         d4:'便利餐饮连锁事业资金组',             aiSelf:4.8, aiScore:4.8, aiTalk:6,  aiPerf:7, coopScore:4.5, myDoc:3,  relDoc:5,  coopPerf:12.5},
-  {name:'李思瑕',role:'资金管理',     d3:'便利餐饮连锁事业财务部',         d4:'便利餐饮连锁事业资金组',             aiSelf:3.5, aiScore:4.2, aiTalk:8,  aiPerf:7, coopScore:4.5, myDoc:3,  relDoc:8,  coopPerf:12.5},
-  {name:'游利亚',role:'资金组主管',   d3:'便利餐饮连锁事业财务部',         d4:'便利餐饮连锁事业资金组',             aiSelf:5.0, aiScore:4.5, aiTalk:16, aiPerf:7, coopScore:4.5, myDoc:18, relDoc:13, coopPerf:12.5},
-  {name:'方嘉玲',role:'资金专员',     d3:'便利餐饮连锁事业财务部',         d4:'便利餐饮连锁事业资金组',             aiSelf:5.0, aiScore:4.8, aiTalk:5,  aiPerf:4, coopScore:4.5, myDoc:3,  relDoc:12, coopPerf:12.5},
-  {name:'张芳芳',role:'餐饮便利CFO',  d3:'便利餐饮连锁事业财务部',         d4:'(财务部直属)',                       aiSelf:3.0, aiScore:4.5, aiTalk:9,  aiPerf:7, coopScore:4.5, myDoc:12, relDoc:12, coopPerf:12.5},
-  {name:'杨林芬',role:'财务总监',     d3:'便利餐饮连锁事业财务部',         d4:'便利餐饮连锁事业效能效益组',         aiSelf:2.65,aiScore:4.3, aiTalk:7,  aiPerf:7, coopScore:4.8, myDoc:8,  relDoc:8,  coopPerf:12.8},
-  {name:'陈玺羽',role:'经营企划',     d3:'便利餐饮连锁事业战略及经营企划部',d4:'便利餐饮连锁事业经营企划组',         aiSelf:4.45,aiScore:1.5, aiTalk:3,  aiPerf:0, coopScore:4.0, myDoc:8,  relDoc:5,  coopPerf:12.0},
-  {name:'史懿晨',role:'投资组专员',   d3:'便利餐饮连锁事业战略及经营企划部',d4:'便利餐饮连锁事业投资组',             aiSelf:5.0, aiScore:4.8, aiTalk:5,  aiPerf:4, coopScore:2.5, myDoc:9,  relDoc:9,  coopPerf:10.5},
-  {name:'葛齐',  role:'战略研究',     d3:'便利餐饮连锁事业战略及经营企划部',d4:'便利餐饮连锁事业投资组',             aiSelf:5.0, aiScore:4.5, aiTalk:10, aiPerf:7, coopScore:4.8, myDoc:4,  relDoc:5,  coopPerf:12.8},
-  {name:'李斌',  role:'集团策略长',   d3:'便利餐饮连锁事业战略及经营企划部',d4:'(战略企划部直属)',                   aiSelf:4.4, aiScore:1.5, aiTalk:2,  aiPerf:0, coopScore:4.8, myDoc:3,  relDoc:7,  coopPerf:12.8},
-  {name:'李昊',  role:'公共事务总监', d3:'便利餐饮连锁事业公司',           d4:'便利餐饮连锁事业社会责任与公共事务组',aiSelf:5.0, aiScore:4.8, aiTalk:18, aiPerf:7, coopScore:4.5, myDoc:14, relDoc:13, coopPerf:12.5},
-  {name:'石颖',  role:'法务',         d3:'便利餐饮连锁事业法务及交易合规部',d4:'便利餐饮连锁事业法务组',             aiSelf:4.95,aiScore:4.8, aiTalk:16, aiPerf:7, coopScore:4.5, myDoc:3,  relDoc:3,  coopPerf:7.5},
-  {name:'王敏崧',role:'法务长',       d3:'便利餐饮连锁事业法务及交易合规部',d4:'(法务部直属)',                       aiSelf:5.0, aiScore:4.7, aiTalk:11, aiPerf:7, coopScore:3.5, myDoc:2,  relDoc:8,  coopPerf:8.5},
-  {name:'吴丹',  role:'资讯长',       d3:'便利餐饮连锁事业集团数智科技组', d4:'(数智科技直属)',                     aiSelf:5.0, aiScore:4.8, aiTalk:28, aiPerf:7, coopScore:4.5, myDoc:9,  relDoc:30, coopPerf:12.5},
-  {name:'高敏慈',role:'行政事务',     d3:'董事长室',                       d4:'(董事长室直属)',                     aiSelf:4.45,aiScore:4.8, aiTalk:25, aiPerf:7, coopScore:3.0, myDoc:1,  relDoc:4,  coopPerf:3.0},
+// ===== TAB SWITCH =====
+function switchTab(id, el) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ===== CHART COLORS =====
+const colors = {
+  blue:   '#1a7cfa',
+  teal:   '#00c4b4',
+  purple: '#6c63ff',
+  orange: '#f5a623',
+  red:    '#ff5f6d',
+  lblue:  'rgba(26,124,250,0.12)',
+  lteal:  'rgba(0,196,180,0.12)',
+};
+
+const chartDefaults = {
+  responsive: true,
+  plugins: {
+    legend: { labels: { font: { size: 12 }, color: '#4a6fa5' } },
+    tooltip: { backgroundColor: 'rgba(20,40,80,0.9)', titleColor:'#fff', bodyColor:'rgba(255,255,255,0.85)', padding:10, cornerRadius:8 }
+  }
+};
+
+// L4 AI Chart
+new Chart(document.getElementById('chart-l4-ai'), {
+  type: 'bar',
+  data: {
+    labels: ['餐饮群总部','大TQ人力','执行长办','执董办','法务合规','食品安全','财务中心'],
+    datasets: [{
+      label: 'AI综合均分',
+      data: [4.57, 4.67, 4.78, 4.80, 3.90, 4.47, 3.90],
+      backgroundColor: [colors.blue, colors.teal, colors.purple, colors.teal, colors.red, colors.blue, colors.red].map(c => c+'dd'),
+      borderColor: [colors.blue, colors.teal, colors.purple, colors.teal, colors.red, colors.blue, colors.red],
+      borderWidth: 2, borderRadius: 6,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      y: { min: 3.0, max: 5.1, grid: { color: '#e8f2ff' }, ticks: { color: '#8aa3cc' } },
+      x: { grid: { display: false }, ticks: { color: '#4a6fa5', font: { size: 11 } } }
+    },
+    plugins: { ...chartDefaults.plugins, annotation: {
+      annotations: { line1: { type:'line', yMin:4.48, yMax:4.48, borderColor:'rgba(26,124,250,0.4)', borderDash:[5,5], label:{ content:'均值4.48', enabled:true, color:'#1a7cfa', font:{size:10} } } }
+    }}
+  }
+});
+
+// L4 Coop Chart
+new Chart(document.getElementById('chart-l4-coop'), {
+  type: 'bar',
+  data: {
+    labels: ['餐饮群总部','大TQ人力','执行长办','执董办','法务合规','食品安全','财务中心'],
+    datasets: [{
+      label: '协同综合均分',
+      data: [4.27, 3.95, 4.36, 4.00, 4.45, 4.44, 3.97],
+      backgroundColor: [colors.teal, colors.red, colors.teal, colors.orange, colors.teal, colors.teal, colors.red].map(c => c+'dd'),
+      borderColor: [colors.teal, colors.red, colors.teal, colors.orange, colors.teal, colors.teal, colors.red],
+      borderWidth: 2, borderRadius: 6,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      y: { min: 3.5, max: 5.0, grid: { color: '#e8f2ff' }, ticks: { color: '#8aa3cc' } },
+      x: { grid: { display: false }, ticks: { color: '#4a6fa5', font: { size: 11 } } }
+    }
+  }
+});
+
+// AI Distribution Donut
+new Chart(document.getElementById('chart-ai-dist'), {
+  type: 'doughnut',
+  data: {
+    labels: ['优秀(4.5-5)', '良好(4.0-4.5)', '极低(<2.0)', '中等(3.0-4.0)'],
+    datasets: [{
+      data: [115, 55, 12, 2],
+      backgroundColor: [colors.teal+'cc', colors.blue+'cc', colors.red+'cc', colors.orange+'cc'],
+      borderColor: ['#fff'],
+      borderWidth: 3
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    cutout: '65%',
+    plugins: { ...chartDefaults.plugins, legend: { position: 'right', labels: { font:{size:12}, color:'#4a6fa5', boxWidth:14 } } }
+  }
+});
+
+// Coop Distribution Donut
+new Chart(document.getElementById('chart-coop-dist'), {
+  type: 'doughnut',
+  data: {
+    labels: ['良好(4.0-4.5)', '优秀(4.5-5)', '中等(3.0-4.0)', '差(2.0-3.0)', '极低(<2.0)'],
+    datasets: [{
+      data: [96, 33, 39, 16, 2],
+      backgroundColor: [colors.blue+'cc', colors.teal+'cc', colors.orange+'cc', colors.red+'cc', '#c0392b'+'cc'],
+      borderColor: ['#fff'],
+      borderWidth: 3
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    cutout: '65%',
+    plugins: { ...chartDefaults.plugins, legend: { position: 'right', labels: { font:{size:12}, color:'#4a6fa5', boxWidth:14 } } }
+  }
+});
+
+// Radar chart
+new Chart(document.getElementById('chart-radar'), {
+  type: 'radar',
+  data: {
+    labels: ['餐饮群总部','大TQ人力','执行长办','法务合规','食品安全','财务中心'],
+    datasets: [
+      {
+        label: 'AI综合均分',
+        data: [4.57, 4.67, 4.78, 3.90, 4.47, 3.90],
+        borderColor: colors.blue, backgroundColor: colors.lblue,
+        pointBackgroundColor: colors.blue, borderWidth: 2, pointRadius: 4,
+      },
+      {
+        label: '协同综合均分',
+        data: [4.27, 3.95, 4.36, 4.45, 4.44, 3.97],
+        borderColor: colors.teal, backgroundColor: colors.lteal,
+        pointBackgroundColor: colors.teal, borderWidth: 2, pointRadius: 4,
+      }
+    ]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      r: {
+        min: 3.0, max: 5.0,
+        ticks: { stepSize: 0.5, color: '#8aa3cc', font:{size:10}, backdropColor:'transparent' },
+        grid: { color: '#c8daf5' },
+        pointLabels: { color: '#4a6fa5', font:{size:11} }
+      }
+    }
+  }
+});
+
+// Scatter chart
+new Chart(document.getElementById('chart-scatter'), {
+  type: 'scatter',
+  data: {
+    datasets: [
+      { label: '数智科技中心', data: [{x:14.72, y:4.58}], backgroundColor: colors.blue, pointRadius: 10 },
+      { label: '业务洞察分析部', data: [{x:7.6, y:4.70}], backgroundColor: colors.teal, pointRadius: 10 },
+      { label: '西式快餐事业本部', data: [{x:13.16, y:4.57}], backgroundColor: colors.purple, pointRadius: 10 },
+      { label: '中式快餐事业本部', data: [{x:10.18, y:4.68}], backgroundColor: colors.orange, pointRadius: 10 },
+      { label: '研发中心', data: [{x:17.27, y:4.45}], backgroundColor: colors.red, pointRadius: 10 },
+      { label: '总经办', data: [{x:6.5, y:4.00}], backgroundColor: '#95a5a6', pointRadius: 10 },
+    ]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      x: { title: { display:true, text:'月均AI对话数量（次）', color:'#4a6fa5', font:{size:12} }, grid:{color:'#e8f2ff'}, ticks:{color:'#8aa3cc'} },
+      y: { title: { display:true, text:'AI综合均分', color:'#4a6fa5', font:{size:12} }, min:3.5, max:5.0, grid:{color:'#e8f2ff'}, ticks:{color:'#8aa3cc'} }
+    }
+  }
+});
+
+// L4 multi-axis chart
+new Chart(document.getElementById('chart-l4-multi'), {
+  type: 'bar',
+  data: {
+    labels: ['餐饮群总部','大TQ人力','执行长办','执董办','法务合规','食品安全','财务中心'],
+    datasets: [
+      { label: 'AI均分', data:[4.57,4.67,4.78,4.80,3.90,4.47,3.90], backgroundColor: colors.blue+'bb', borderRadius:5, borderSkipped:false },
+      { label: '协同均分', data:[4.27,3.95,4.36,4.00,4.45,4.44,3.97], backgroundColor: colors.teal+'bb', borderRadius:5, borderSkipped:false },
+      { label: 'AI对话均值(÷4)', data:[13.29/4,15.06/4,16.4/4,19/4,7.5/4,11.07/4,8.42/4], backgroundColor: colors.purple+'bb', borderRadius:5, borderSkipped:false },
+    ]
+  },
+  options: {
+    ...chartDefaults,
+    scales: {
+      y: { min:0, max:6.0, grid:{color:'#e8f2ff'}, ticks:{color:'#8aa3cc'} },
+      x: { grid:{display:false}, ticks:{color:'#4a6fa5',font:{size:11}} }
+    }
+  }
+});
+
+// L5 AI TQ
+new Chart(document.getElementById('chart-l5-ai-tq'), {
+  type: 'bar',
+  data: {
+    labels: ['业务洞察\n分析部','数智科技\n中心','中式快餐\n事业本部','西式快餐\n事业本部','研发中心','总经办'],
+    datasets: [{
+      label: 'AI综合均分',
+      data: [4.70, 4.58, 4.68, 4.57, 4.45, 4.00],
+      backgroundColor: [colors.teal, colors.blue, colors.blue, colors.blue, colors.orange, '#95a5a6'].map(c=>c+'cc'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    indexAxis: 'y',
+    scales: {
+      x: { min:3.5, max:5.1, grid:{color:'#e8f2ff'}, ticks:{color:'#8aa3cc'} },
+      y: { grid:{display:false}, ticks:{color:'#4a6fa5',font:{size:11}} }
+    }
+  }
+});
+
+// L5 Coop TQ
+new Chart(document.getElementById('chart-l5-coop-tq'), {
+  type: 'bar',
+  data: {
+    labels: ['业务洞察\n分析部','数智科技\n中心','西式快餐\n事业本部','研发中心','总经办','中式快餐\n事业本部'],
+    datasets: [{
+      label: '协同综合均分',
+      data: [4.70, 4.42, 4.33, 4.02, 4.00, 3.96],
+      backgroundColor: [colors.teal, colors.teal, colors.blue, colors.orange, colors.orange, colors.red].map(c=>c+'cc'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    indexAxis: 'y',
+    scales: {
+      x: { min:3.5, max:5.1, grid:{color:'#e8f2ff'}, ticks:{color:'#8aa3cc'} },
+      y: { grid:{display:false}, ticks:{color:'#4a6fa5',font:{size:11}} }
+    }
+  }
+});
+
+// L5 AI Other
+new Chart(document.getElementById('chart-l5-ai-other'), {
+  type: 'bar',
+  data: {
+    labels: ['大TQ合规\n内控组','大TQ经营\n企划组','大TQ工厂组','大TQ业务\n支持组','大TQ门店组','大TQ账务组','大TQ法务组'],
+    datasets: [{
+      label: 'AI综合均分',
+      data: [4.80, 4.78, 4.65, 4.67, 3.67, 3.90, 3.00],
+      backgroundColor: [colors.teal,colors.blue,colors.teal,colors.teal,colors.orange,colors.red,colors.red].map(c=>c+'cc'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    indexAxis: 'y',
+    scales: {
+      x: { min:2.0, max:5.2, grid:{color:'#e8f2ff'}, ticks:{color:'#8aa3cc'} },
+      y: { grid:{display:false}, ticks:{color:'#4a6fa5',font:{size:11}} }
+    }
+  }
+});
+
+// L5 Coop Other
+new Chart(document.getElementById('chart-l5-coop-other'), {
+  type: 'bar',
+  data: {
+    labels: ['大TQ法务组','大TQ门店组','大TQ合规\n内控组','大TQ经营\n企划组','大TQ工厂组','大TQ业务\n支持组','大TQ账务组'],
+    datasets: [{
+      label: '协同综合均分',
+      data: [4.50, 4.50, 4.40, 4.32, 4.42, 4.00, 3.97],
+      backgroundColor: [colors.teal,colors.teal,colors.teal,colors.blue,colors.teal,colors.orange,colors.red].map(c=>c+'cc'),
+      borderRadius: 6,
+    }]
+  },
+  options: {
+    ...chartDefaults,
+    indexAxis: 'y',
+    scales: {
+      x: { min:3.0, max:5.2, grid:{color:'#e8f2ff'}, ticks:{color:'#8aa3cc'} },
+      y: { grid:{display:false}, ticks:{color:'#4a6fa5',font:{size:11}} }
+    }
+  }
+});
+
+// ===== TABLE DATA =====
+const tableData = [
+  ['吴丹','资讯长','餐饮群总部','数智科技中心',4.8,20,7,4.5,12.5],
+  ['王悦','产品经理','餐饮群总部','数智科技中心',4.8,19,7,4.5,12.0],
+  ['杨光','系统架构师','餐饮群总部','数智科技中心',4.8,11,7,4.5,12.0],
+  ['姚智捷','采购管理','餐饮群总部','数智科技中心',4.7,27,7,4.5,12.0],
+  ['丁昊','IT运维','餐饮群总部','数智科技中心',4.7,6,7,4.5,12.0],
+  ['苏慧','管培生','餐饮群总部','西式快餐事业本部',4.8,14,7,4.5,12.5],
+  ['胡镇','专案规划与执行','餐饮群总部','西式快餐事业本部',4.5,7,7,4.5,12.0],
+  ['王寅','营运推进专员','餐饮群总部','西式快餐事业本部',4.8,7,7,4.5,12.5],
+  ['庞相勇','首席运营官','餐饮群总部','中式快餐事业本部',4.5,12,7,3.5,10.5],
+  ['崔凯军','大TQ执行长','大TQ执行长办公室','计算错误',4.8,19,7,4.0,12.0],
+  ['高敏慈','行政事务','大TQ人力发展中心','计算错误',4.8,25,7,3.0,3.0],
+  ['王洁','人力资源负责人','大TQ人力发展中心','计算错误',4.5,8,7,4.5,12.5],
+  ['张神杰','人力培训岗','大TQ人力发展中心','大TQ业务支持组',4.5,15,7,4.0,12.0],
+  ['莫启荣','HRBP主管','大TQ人力发展中心','大TQ业务支持组',4.5,12,7,4.0,12.0],
+  ['尤优','人事行政文化岗','大TQ人力发展中心','大TQ业务支持组',4.8,16,7,4.5,12.0],
+  ['孙嘉仪','薪资专员','大TQ人力发展中心','大TQ业务支持组',4.8,8,7,4.5,12.0],
+  ['陆磊','招聘专员','大TQ人力发展中心','大TQ业务支持组',4.5,12,7,4.0,11.0],
+  ['刘扬','行销部主管','餐饮群总部','西式快餐事业本部',4.5,8,7,4.0,12.0],
+  ['李纯冬','开发部主管','餐饮群总部','西式快餐事业本部',4.8,12,7,4.5,12.0],
+  ['张伟','网络规划','餐饮群总部','西式快餐事业本部',4.5,19,7,4.0,11.5],
+  ['石颖','法务','餐饮群总部','数智科技中心',4.8,16,7,4.5,7.5],
 ];
 
-// ─── 四级部门聚合 ───────────────────────────────────────
-const dept3Map = {};
-people.forEach(p => {
-  const k = p.d3;
-  if(!dept3Map[k]) dept3Map[k] = [];
-  dept3Map[k].push(p);
-});
-const dept3List = Object.entries(dept3Map).map(([k,arr]) => ({
-  name: k,
-  members: arr,
-  aiScore: avg(arr.map(p=>p.aiScore)),
-  coopScore: avg(arr.map(p=>p.coopScore)),
-  aiTalk: avg(arr.map(p=>p.aiTalk)),
-  aiPerf: avg(arr.map(p=>p.aiPerf)),
-  coopPerf: avg(arr.map(p=>p.coopPerf)),
-  myDoc: sum(arr.map(p=>p.myDoc)),
-  relDoc: sum(arr.map(p=>p.relDoc)),
-}));
+const tbody = document.getElementById('tableBody');
+function renderTable(data) {
+  tbody.innerHTML = '';
+  data.forEach(r => {
+    const aiScore = r[4];
+    const coopScore = r[7];
+    let tag, tagClass;
+    if(aiScore >= 4.7) { tag='优秀'; tagClass='tag-b'; }
+    else if(aiScore >= 4.0) { tag='良好'; tagClass='tag-a'; }
+    else if(aiScore >= 3.0) { tag='中等'; tagClass='tag-c'; }
+    else { tag='待提升'; tagClass='tag-d'; }
+    const coopColor = coopScore >= 4.5 ? '#00b894' : coopScore >= 4.0 ? '#1a7cfa' : coopScore >= 3.0 ? '#f5a623' : '#ff5f6d';
+    tbody.innerHTML += `<tr>
+      <td><strong>${r[0]}</strong></td>
+      <td style="color:var(--text-secondary)">${r[1]}</td>
+      <td style="color:var(--text-secondary)">${r[2]}</td>
+      <td style="color:var(--text-muted);font-size:12px">${r[3]}</td>
+      <td><span style="font-weight:700;color:${aiScore>=4.5?'#00b894':aiScore>=4.0?'#1a7cfa':aiScore>=3.0?'#f5a623':'#ff5f6d'}">${aiScore}</span></td>
+      <td>${r[5]}</td>
+      <td>${r[6]}</td>
+      <td><span style="font-weight:700;color:${coopColor}">${r[7]}</span></td>
+      <td>${r[8]}</td>
+      <td><span class="tag ${tagClass}">${tag}</span></td>
+    </tr>`;
+  });
+}
+renderTable(tableData);
 
-// ─── 五级部门聚合 ───────────────────────────────────────
-const dept4Map = {};
-people.forEach(p => {
-  const k = p.d4;
-  if(!dept4Map[k]) dept4Map[k] = [];
-  dept4Map[k].push(p);
-});
-const dept4List = Object.entries(dept4Map).map(([k,arr]) => ({
-  name: k,
-  parent: arr[0].d3,
-  members: arr,
-  aiScore: avg(arr.map(p=>p.aiScore)),
-  coopScore: avg(arr.map(p=>p.coopScore)),
-  aiTalk: avg(arr.map(p=>p.aiTalk)),
-  aiPerf: avg(arr.map(p=>p.aiPerf)),
-  coopPerf: avg(arr.map(p=>p.coopPerf)),
-})).sort((a,b)=>b.aiScore-a.aiScore);
-
-function avg(arr){ return Math.round(arr.reduce((s,v)=>s+v,0)/arr.length*100)/100 }
-function sum(arr){ return arr.reduce((s,v)=>s+v,0) }
-
-// ─── 部门短名 ───────────────────────────────────────────
-const shortName = {
-  '便利餐饮连锁事业财务部': '财务部',
-  '便利餐饮连锁事业战略及经营企划部': '战略企划部',
-  '便利餐饮连锁事业公司': '公共事务',
-  '便利餐饮连锁事业法务及交易合规部': '法务部',
-  '便利餐饮连锁事业集团数智科技组': '数智科技组',
-  '董事长室': '董事长室',
-};
-const shortName4 = {
-  '便利餐饮连锁事业资金组':'资金组',
-  '便利餐饮连锁事业效能效益组':'效能效益组',
-  '便利餐饮连锁事业经营企划组':'经营企划组',
-  '便利餐饮连锁事业投资组':'投资组',
-  '便利餐饮连锁事业社会责任与公共事务组':'公共事务组',
-  '便利餐饮连锁事业法务组':'法务组',
-  '(财务部直属)':'财务部直属',
-  '(战略企划部直属)':'战略企划直属',
-  '(法务部直属)':'法务部直属',
-  '(数智科技直属)':'数智科技直属',
-  '(董事长室直属)':'董事长室直属',
-};
-function sn3(k){ return shortName[k]||k }
-function sn4(k){ return shortName4[k]||k }
-
-// ═══════════════════════════════════════════════════════
-// CHARTS
-// ═══════════════════════════════════════════════════════
-const C = { a1:'#00e5c0', a2:'#00b4d8', a3:'#48cae4', a4:'#0077b6', grid:'rgba(0,229,192,0.08)', text:'#7ecfbc' };
-Chart.defaults.color = C.text;
-Chart.defaults.font.family = "'PingFang SC','Microsoft YaHei',sans-serif";
-
-const d3Labels = dept3List.map(d=>sn3(d.name));
-
-// 四级 AI Bar
-new Chart(document.getElementById('d4AiBar'),{
-  type:'bar',
-  data:{
-    labels: d3Labels,
-    datasets:[{
-      label:'AI综合均分',
-      data: dept3List.map(d=>d.aiScore),
-      backgroundColor: dept3List.map(d=> d.aiScore>=4.5?'rgba(0,229,192,0.75)': d.aiScore>=3.5?'rgba(0,180,216,0.75)':'rgba(255,84,112,0.75)'),
-      borderColor: dept3List.map(d=> d.aiScore>=4.5?C.a1: d.aiScore>=3.5?C.a2:'#ff5470'),
-      borderWidth:1.5, borderRadius:5,
-    }]
-  },
-  options:{
-    responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false},
-      tooltip:{callbacks:{label:ctx=>` AI均分：${ctx.raw}`}}},
-    scales:{
-      x:{grid:{display:false}, ticks:{font:{size:11}}},
-      y:{min:0,max:5.5, grid:{color:C.grid}, ticks:{font:{size:11}}}
-    }
-  }
-});
-
-// 四级 Coop Bar
-new Chart(document.getElementById('d4CoopBar'),{
-  type:'bar',
-  data:{
-    labels: d3Labels,
-    datasets:[{
-      label:'协同综合均分',
-      data: dept3List.map(d=>d.coopScore),
-      backgroundColor: dept3List.map(d=> d.coopScore>=4.5?'rgba(72,202,228,0.75)': d.coopScore>=3.5?'rgba(0,119,182,0.7)':'rgba(255,84,112,0.75)'),
-      borderColor: dept3List.map(d=> d.coopScore>=4.5?C.a3: d.coopScore>=3.5?C.a4:'#ff5470'),
-      borderWidth:1.5, borderRadius:5,
-    }]
-  },
-  options:{
-    responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}},
-    scales:{
-      x:{grid:{display:false}, ticks:{font:{size:11}}},
-      y:{min:0,max:5.5, grid:{color:C.grid}, ticks:{font:{size:11}}}
-    }
-  }
-});
-
-// 四级 雷达
-new Chart(document.getElementById('d4Radar'),{
-  type:'radar',
-  data:{
-    labels:['AI综合','协同综合','AI对话/30','AI绩效/7','协同绩效/12.8'],
-    datasets: dept3List.map((d,i)=>{
-      const colors=['rgba(0,229,192,0.8)','rgba(255,84,112,0.8)','rgba(72,202,228,0.8)','rgba(0,119,182,0.8)','rgba(255,209,102,0.8)','rgba(0,180,216,0.8)'];
-      return {
-        label: sn3(d.name),
-        data:[d.aiScore, d.coopScore, Math.min(d.aiTalk/30*5,5), d.aiPerf/7*5, d.coopPerf/12.8*5],
-        borderColor:colors[i], backgroundColor:colors[i].replace('0.8','0.08'),
-        borderWidth:2, pointRadius:4
-      };
-    })
-  },
-  options:{
-    responsive:true, maintainAspectRatio:true,
-    plugins:{legend:{position:'right', labels:{font:{size:11},padding:12,boxWidth:12}}},
-    scales:{r:{min:0,max:5, grid:{color:'rgba(0,229,192,0.12)'}, angleLines:{color:'rgba(0,229,192,0.12)'},
-      pointLabels:{font:{size:11},color:C.text}, ticks:{display:false,stepSize:1}}}
-  }
-});
-
-// 五级 AI Bar
-const d4sorted = [...dept4List].sort((a,b)=>b.aiScore-a.aiScore);
-new Chart(document.getElementById('d5AiBar'),{
-  type:'bar',
-  data:{
-    labels: d4sorted.map(d=>sn4(d.name)),
-    datasets:[{
-      label:'AI综合均分',
-      data: d4sorted.map(d=>d.aiScore),
-      backgroundColor: d4sorted.map(d=> d.aiScore>=4.5?'rgba(0,229,192,0.75)': d.aiScore>=3.5?'rgba(0,180,216,0.75)':'rgba(255,84,112,0.75)'),
-      borderColor: d4sorted.map(d=> d.aiScore>=4.5?C.a1: d.aiScore>=3.5?C.a2:'#ff5470'),
-      borderWidth:1.5, borderRadius:4,
-    }]
-  },
-  options:{
-    indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}},
-    scales:{
-      x:{min:0,max:5.5, grid:{color:C.grid}, ticks:{font:{size:11}}},
-      y:{grid:{display:false}, ticks:{font:{size:11}}}
-    }
-  }
-});
-
-// 五级 Talk Bar
-const d4talkSorted = [...dept4List].sort((a,b)=>b.aiTalk-a.aiTalk);
-new Chart(document.getElementById('d5TalkBar'),{
-  type:'bar',
-  data:{
-    labels: d4talkSorted.map(d=>sn4(d.name)),
-    datasets:[{
-      label:'月均对话次数',
-      data: d4talkSorted.map(d=>d.aiTalk),
-      backgroundColor:'rgba(72,202,228,0.65)',
-      borderColor:C.a3, borderWidth:1.5, borderRadius:4,
-    }]
-  },
-  options:{
-    indexAxis:'y', responsive:true, maintainAspectRatio:false,
-    plugins:{legend:{display:false}},
-    scales:{
-      x:{grid:{color:C.grid}, ticks:{font:{size:11}}},
-      y:{grid:{display:false}, ticks:{font:{size:11}}}
-    }
-  }
-});
-
-// ═══════════════════════════════════════════════════════
-// 四级部门卡片
-// ═══════════════════════════════════════════════════════
-const dept3Comments = {
-  '便利餐饮连锁事业财务部': {
-    comment:'财务部是全公司AI应用规模最大、整体水平最稳健的部门。资金组6人组成核心力量，AI均分4.63，充分体现专业岗位与AI工具的高匹配度。张芳芳（CFO）、杨林芬（财务总监）在管理层AI使用上起到良好带头作用。协同方面游利亚文档创建量18篇居部门最高，整体协同意识较强。',
-    suggest:['胡紫怡协同得分仅3.0，需加强在线文档创建习惯，目标每月≥5篇','杨林芬AI自评仅2.65，需提升自我认知，建议参与效能类AI使用培训','整体AI对话量偏低（均9次），可进一步挖掘深度使用场景'],
-    stars: 4
-  },
-  '便利餐饮连锁事业战略及经营企划部': {
-    comment:'战略企划部是本次考评中AI应用差距最大的部门，均分仅3.08，主要由李斌（策略长，AI分1.5/对话2次）和陈玺羽（经营企划，AI分1.5/对话3次）大幅拖低。投资组的葛齐AI分4.5表现良好，与两位低分形成明显落差。史懿晨协同得分2.5，文档以行政内容为主，专业沉淀严重不足。该部门需作为重点改善对象。',
-    suggest:['立即对李斌、陈玺羽开展AI使用专项辅导，30天内AI分需≥3.5','为投资组制定专业协同文档模板（研究报告、项目追踪、会议纪要）','设部门级AI使用最低月对话标准≥8次，部门主管负责督导'],
-    stars: 2
-  },
-  '便利餐饮连锁事业公司': {
-    comment:'该分类目前仅有李昊（社会责任与公共事务总监）代表，AI综合4.8、对话18次、协同得分4.5，双维表现均属优秀。工作内容高度与AI工具匹配，文档覆盖舆情监测、预算分配等核心职责，是公共事务岗位AI赋能的示范案例。',
-    suggest:['持续维持高水平，建议总结公共事务岗AI使用场景手册对外分享','增加文档内容的结构化程度，强化可被复用性'],
-    stars: 5
-  },
-  '便利餐饮连锁事业法务及交易合规部': {
-    comment:'法务部AI应用均分4.75较好，石颖（法务）表现突出（AI4.8/16次），证明法务岗与AI高度适配。但协同侧均分4.0偏低，王敏崧（法务长）协同仅3.5，文档多为会议纪要和统计表，缺乏法务专业分析与制度文件，专业深度有待加强。',
-    suggest:['王敏崧需在协同文档中增加法务专业内容（合规分析、案例研究等）','提升专业文档在文档库中的占比至≥70%','AI使用场景可进一步拓展至合同风险提示、法规解读等高价值场景'],
-    stars: 3
-  },
-  '便利餐饮连锁事业集团数智科技组': {
-    comment:'数智科技组资讯长吴丹是全公司最强单点：AI对话28次（全公司最高）、综合得分4.8、协同文档39篇（我的+相关）。在线文档聚焦数智化战略与IT管理，协作度高，实现了"工具领导者"的完美诠释。其经验和方法论应系统化向全公司推广。',
-    suggest:['建立数智化最佳实践知识库，由吴丹主导整理','考虑开展跨部门数智化辅导工作，重点帮扶战略企划部'],
-    stars: 5
-  },
-  '董事长室': {
-    comment:'高敏慈AI使用频率高（25次、得分4.8），积极性强，但协同文档仅1篇（得分3.0、协同绩效3分），存在明显的AI与协同跛行问题。AI对话的产出未有效沉淀为可共享的在线文档，导致个人工作价值难以被组织感知和复用。',
-    suggest:['将AI对话产出（活动方案、纪要整理、流程优化等）系统转化为在线文档','设每月协同文档新建目标≥4篇，且须为工作内容型文档','建立行政类文档规范化模板，提升文档的组织价值'],
-    stars: 3
-  }
-};
-
-const dept4El = document.getElementById('dept4Cards');
-dept3List.forEach(d => {
-  const info = dept3Comments[d.name] || {comment:'暂无点评',suggest:[],stars:3};
-  const stars = '★'.repeat(info.stars)+'☆'.repeat(5-info.stars);
-  const aiLv = d.aiScore>=4.5?'bh':d.aiScore>=3.5?'':'bl';
-  const coopLv = d.coopScore>=4.5?'bh':d.coopScore>=3.5?'':'bl';
-  const names = d.members.map(m=>`<span class="dmember">${m.name}</span>`).join('');
-  const suggestItems = info.suggest.map(s=>`<li>${s}</li>`).join('');
-  dept4El.innerHTML += `
-  <div class="dept-card">
-    <div class="dept-card-hd">
-      <div class="dname">${sn3(d.name)}</div>
-      <div class="dsub">${d.name} &nbsp;·&nbsp; ${d.members.length}人 &nbsp;·&nbsp; <span class="stars">${stars}</span></div>
-    </div>
-    <div class="dept-card-body">
-      <div class="dept-stats">
-        <div class="dstat"><div class="dstat-v">${d.aiScore.toFixed(2)}</div><div class="dstat-l">AI均分</div></div>
-        <div class="dstat"><div class="dstat-v">${d.coopScore.toFixed(2)}</div><div class="dstat-l">协同均分</div></div>
-        <div class="dstat"><div class="dstat-v">${d.aiTalk.toFixed(1)}</div><div class="dstat-l">月均对话</div></div>
-        <div class="dstat"><div class="dstat-v">${d.aiPerf.toFixed(1)}</div><div class="dstat-l">AI绩效均</div></div>
-        <div class="dstat"><div class="dstat-v">${d.coopPerf.toFixed(1)}</div><div class="dstat-l">协同绩效均</div></div>
-      </div>
-      <div class="dept-score-bar">
-        <div class="sb-row"><span class="sb-label">AI综合</span><div class="sb-track"><div class="sb-fill" style="width:${d.aiScore/5*100}%"></div></div><span class="sb-val">${d.aiScore.toFixed(1)}</span></div>
-        <div class="sb-row"><span class="sb-label">协同综合</span><div class="sb-track"><div class="sb-fill" style="width:${d.coopScore/5*100}%;background:linear-gradient(90deg,#0077b6,#48cae4)"></div></div><span class="sb-val">${d.coopScore.toFixed(1)}</span></div>
-        <div class="sb-row"><span class="sb-label">AI对话</span><div class="sb-track"><div class="sb-fill" style="width:${Math.min(d.aiTalk/30*100,100)}%;background:linear-gradient(90deg,#48cae4,#00e5c0)"></div></div><span class="sb-val">${d.aiTalk.toFixed(0)}次</span></div>
-      </div>
-      <div class="dept-comment">${info.comment}</div>
-      <div class="dept-suggest"><ul style="padding-left:16px">${suggestItems}</ul></div>
-      <div class="dept-members">${names}</div>
-    </div>
-  </div>`;
-});
-
-// ═══════════════════════════════════════════════════════
-// 五级部门卡片
-// ═══════════════════════════════════════════════════════
-const dept4Comments = {
-  '便利餐饮连锁事业资金组':'AI均分4.63，6人团队整体水平稳定。游利亚主管起到良好带头作用（16次对话），胡紫怡协同文档仅1篇需重点改善。建议将"资金日报/月报模版"、"外汇操作SOP"等核心业务文档在线化。',
-  '便利餐饮连锁事业效能效益组':'杨林芬财务总监AI得分4.3，协同4.8，在管理层属良好水平。AI自评偏低（2.65），自我认可度不足，应强化AI辅助决策的实感体验，发挥管理层示范效应。',
-  '便利餐饮连锁事业经营企划组':'陈玺羽AI仅1.5，是该组最大短板。岗位需要高创意与分析能力，与AI高度匹配，但实际使用严重不足。需立即介入辅导，明确AI在企划方案生成、数据可视化辅助等场景的应用。',
-  '便利餐饮连锁事业投资组':'葛齐（4.5）与史懿晨（协同2.5）形成明显落差。投资岗AI使用潜力大，葛齐已验证可行，需将经验推广至史懿晨。史懿晨协同文档须脱离行政事务，转向投资研究、项目追踪等核心内容。',
-  '便利餐饮连锁事业社会责任与公共事务组':'李昊AI综合4.8、18次对话，文档涵盖舆情、预算、政府关系，高度匹配岗位职责。是本次考评中单人综合表现最全面均衡的人员之一，应树立为全公司标杆。',
-  '便利餐饮连锁事业法务组':'石颖AI4.8、16次对话，协同4.5，在法务专业岗中表现优秀。文档集中于会议纪要和协作场景，建议进一步增加法律研判类专业文档，深化AI在合规风控场景的应用。',
-  '(财务部直属)':'张芳芳（CFO）AI综合4.5，协同4.5，整体协调，管理层AI工具应用意识良好。文档质量高，覆盖经营月报和专案管理。可进一步探索AI辅助财务预测、异常识别等高阶场景。',
-  '(战略企划部直属)':'李斌（策略长）AI得分仅1.5，全公司最低之一，月度绩效0分。策略岗是AI赋能潜力最大的岗位，须立即介入辅导，制定专属使用路径，明确30天内改善目标。',
-  '(法务部直属)':'王敏崧（法务长）AI综合4.7，对话11次，AI使用相对尚可，但协同仅3.5，文档以事务性内容为主，缺乏法务专业深度分析。应引导其将法律专业判断通过在线文档系统化沉淀。',
-  '(数智科技直属)':'吴丹（资讯长）是全公司数智化标杆：AI28次、得分4.8、协同文档39篇合计，全面领先。其数智化战略与IT管理文档体系成熟，建议系统整理为可被公司其他部门学习的最佳实践库。',
-  '(董事长室直属)':'高敏慈AI使用积极（25次、4.8分），但协同文档仅1篇，月度绩效仅3分，AI与协同严重失衡。核心问题是AI对话产出未转化为在线文档，需建立"AI→文档"的转化习惯，每次对话结束后及时沉淀成果。',
-};
-
-const dept5El = document.getElementById('dept5Cards');
-dept4List.forEach(d => {
-  const comment = dept4Comments[d.name] || '暂无点评';
-  const names = d.members.map(m=>`<span class="sub5-m">${m.name}(${m.role})</span>`).join('');
-  const aiFill = d.aiScore>=4.5?C.a1: d.aiScore>=3.5?C.a2:'#ff5470';
-  const coopFill = d.coopScore>=4.5?C.a3: d.coopScore>=3.5?C.a4:'#ff5470';
-  dept5El.innerHTML += `
-  <div class="sub5">
-    <div class="sub5-hd">
-      <div class="sname">${sn4(d.name)}</div>
-      <div class="sparent">${d.parent} &nbsp;·&nbsp; ${d.members.length}人</div>
-    </div>
-    <div class="sub5-body">
-      <div class="sub5-row"><span class="sub5-lbl">AI综合</span><div class="sub5-track"><div class="sub5-fill" style="width:${d.aiScore/5*100}%;background:linear-gradient(90deg,${aiFill}99,${aiFill})"></div></div><span class="sub5-val">${d.aiScore.toFixed(2)}</span></div>
-      <div class="sub5-row"><span class="sub5-lbl">协同综合</span><div class="sub5-track"><div class="sub5-fill" style="width:${d.coopScore/5*100}%;background:linear-gradient(90deg,${coopFill}99,${coopFill})"></div></div><span class="sub5-val">${d.coopScore.toFixed(2)}</span></div>
-      <div class="sub5-row"><span class="sub5-lbl">月均对话</span><div class="sub5-track"><div class="sub5-fill" style="width:${Math.min(d.aiTalk/30*100,100)}%;background:linear-gradient(90deg,#48cae499,#48cae4)"></div></div><span class="sub5-val">${d.aiTalk.toFixed(1)}</span></div>
-      <div class="sub5-row"><span class="sub5-lbl">协同绩效</span><div class="sub5-track"><div class="sub5-fill" style="width:${d.coopPerf/12.8*100}%;background:linear-gradient(90deg,#0077b699,#0077b6)"></div></div><span class="sub5-val">${d.coopPerf.toFixed(1)}</span></div>
-      <div class="sub5-members">${names}</div>
-      <div class="sub5-comment">${comment}</div>
-    </div>
-  </div>`;
-});
-
-// ═══════════════════════════════════════════════════════
-// 全员明细表
-// ═══════════════════════════════════════════════════════
-const tbody = document.getElementById('mainTbody');
-const sorted = [...people].sort((a,b)=> a.d3.localeCompare(b.d3,'zh') || a.d4.localeCompare(b.d4,'zh'));
-sorted.forEach(p => {
-  const aiLv = p.aiScore>=4.5?'bh':p.aiScore>=3.5?'bm':'bl';
-  const coopLv = p.coopScore>=4.5?'bh':p.coopScore>=3.5?'bm':'bl';
-  tbody.innerHTML += `
-  <tr>
-    <td>${p.name}</td>
-    <td style="color:var(--tdim);font-size:12px">${sn3(p.d3)}</td>
-    <td style="color:var(--t3);font-size:12px">${sn4(p.d4)}</td>
-    <td style="color:var(--t3)">${p.role}</td>
-    <td>${p.aiSelf}</td>
-    <td><span class="bdg ${aiLv}">${p.aiScore}</span></td>
-    <td style="color:var(--a1)">${p.aiTalk}</td>
-    <td>${p.aiPerf}</td>
-    <td><span class="bdg ${coopLv}">${p.coopScore}</span></td>
-    <td>${p.myDoc}</td>
-    <td>${p.relDoc}</td>
-    <td>${p.coopPerf}</td>
-  </tr>`;
-});
+function filterTable() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const filtered = tableData.filter(r => r[0].toLowerCase().includes(q) || r[2].toLowerCase().includes(q) || r[3].toLowerCase().includes(q));
+  renderTable(filtered);
+}
 </script>
 </body>
 </html>
